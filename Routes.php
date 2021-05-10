@@ -1,6 +1,4 @@
 <?php
 
-use \Connection;
 
-
-Connection::get('/','home','index');
+\Application::get('/','home','index');

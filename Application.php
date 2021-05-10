@@ -31,7 +31,7 @@ class Application{
 				try{
 					//rota encontrada
 					$control = ucfirst($controller).'Controller';
-					$class = 'Controllers\\'.$control;
+					$class = 'App\\Controllers\\'.$control;
 					$newController = new $class;
 					$newController->$func();
 				}catch(Exception $e){

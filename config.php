@@ -6,4 +6,7 @@ const DBNAME = 'dentro_da_informacao';
 const USER = 'root';
 const PASSWORD = '';
 
-require '../vendor/autoload.php';
+require 'vendor/autoload.php';
+
+require 'Application.php';
+require 'Routes.php';
