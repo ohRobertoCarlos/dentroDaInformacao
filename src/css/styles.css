@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.conteiner {
+    display: block;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.conteiner input[type="email"],.conteiner input[type="password"] {
+    display: block;
+    width: 70%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding: 5px;
+}
+
+.conteiner input[type="submit"]{
+    margin: 0 auto;
+    margin-bottom: 30px;
+    padding: 10px;
+    display: block;
+    width: 30%;
+}

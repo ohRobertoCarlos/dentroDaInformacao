@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 10-Maio-2021 às 01:03
+-- Tempo de geração: 11-Maio-2021 às 03:06
 -- Versão do servidor: 10.4.17-MariaDB
 -- versão do PHP: 8.0.0
 
@@ -32,6 +32,24 @@ CREATE TABLE `contato` (
   `email` varchar(50) NOT NULL,
   `telefone` varchar(15) NOT NULL,
   `id_usuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `noticia`
+--
+
+CREATE TABLE `noticia` (
+  `id` int(11) NOT NULL,
+  `titulo` varchar(50) NOT NULL,
+  `subtitulo` varchar(70) NOT NULL,
+  `texto_conteudo` text NOT NULL,
+  `id_autor` int(11) NOT NULL,
+  `thumbnail` varchar(50) NOT NULL,
+  `data_publicacao` date NOT NULL,
+  `descricao` text NOT NULL,
+  `slug` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -71,6 +89,13 @@ ALTER TABLE `contato`
   ADD KEY `id_usuario` (`id_usuario`);
 
 --
+-- Índices para tabela `noticia`
+--
+ALTER TABLE `noticia`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_autor` (`id_autor`);
+
+--
 -- Índices para tabela `usuario`
 --
 ALTER TABLE `usuario`
@@ -94,6 +119,12 @@ ALTER TABLE `contato`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de tabela `noticia`
+--
+ALTER TABLE `noticia`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de tabela `usuario`
 --
 ALTER TABLE `usuario`
@@ -114,6 +145,12 @@ ALTER TABLE `usuario_admin`
 --
 ALTER TABLE `contato`
   ADD CONSTRAINT `contato_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
+
+--
+-- Limitadores para a tabela `noticia`
+--
+ALTER TABLE `noticia`
+  ADD CONSTRAINT `noticia_ibfk_1` FOREIGN KEY (`id_autor`) REFERENCES `usuario_admin` (`id`);
 
 --
 -- Limitadores para a tabela `usuario_admin`

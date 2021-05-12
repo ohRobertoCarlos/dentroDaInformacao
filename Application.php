@@ -1,9 +1,8 @@
 <?php
 
-
 class Application{
 
-    private $isExecuted = false;
+	private $isExecuted = false;
 
 	public static function getUrl(){
 		//Se a rota for a raiz, retorna o que tiver nesta rota
@@ -26,6 +25,7 @@ class Application{
 
 	public static function get($route,$controller,$func){
 
+
 			if(self::getUrl() == $route){
 
 				try{
@@ -40,7 +40,8 @@ class Application{
 			}else{
 				return false;
 			}
-		
 		}
-		
 }
+
+
+?>
