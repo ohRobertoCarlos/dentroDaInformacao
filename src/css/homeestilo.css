@@ -1,0 +1,45 @@
+body{
+    background-color:gray;
+}
+#divdireita{
+    background-color: darkblue;
+    width: 600px;
+    height:400px;
+}
+#divesquerda{
+   background-color: mediumspringgreen;
+   width: 570px;
+   height:817px;
+   float: right;
+   position:absolute;
+   margin: 15%;
+   left:37%;
+   top: 17%;
+   
+}
+#divdireita2{
+    background-color: darkslateblue;
+    width: 600px;
+    height: 400px;
+}
+div{
+    margin: 15px;
+}
+
+footer{
+    width: 1195px;
+    height: 200px;
+    background-color: black;
+    margin: 10px;
+}
+#cabecalho{
+    width: 1200px;
+    height: 250px;
+    background-color: lime;
+}
+a{
+    color: rgba(253, 252, 252, 0.931);
+    left: 37%;
+    text-align: center;
+
+}

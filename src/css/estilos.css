@@ -1,0 +1,62 @@
+
+p{
+   font-style: normal;
+   color:cornsilk;
+   text-align: center;
+   font-size:70px;
+}
+body{
+      
+  }
+ #cabecalho{
+    background-color:red;
+    width: 1200px;
+    height: 250px;
+    border-radius: 10px;
+ }
+ #rodape{
+     position: relative;
+     bottom:0;
+     border-radius: 10px;
+ }
+ a{
+     color:black;
+     text-align: center;
+     font-style:oblique;
+     padding: 5px;
+     float: right;
+ }
+ #div1{
+     background-color: forestgreen;
+     width: 600px;
+     height: 300px;
+     border-radius: 10px;
+     margin:1,9%;
+    
+ }
+ #div2{
+     background-color: indigo;
+     width: 600px;
+     height: 300px;
+     border-radius: 10px;
+ }
+ 
+ #div4{
+
+   background-color: mediumspringgreen;
+   width: 570px;
+   height: 614px;
+   float: right;
+   position:absolute;
+   margin: 15%;
+   left:37%;
+   top: 27%;
+   border-radius: 10px;
+   
+  
+ }
+ #rodape{
+     background-color: black;
+     width: 1200px;
+     height: 200px;
+ }
