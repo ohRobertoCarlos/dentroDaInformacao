@@ -25,3 +25,46 @@
     display: block;
     width: 30%;
 }
+
+article {
+    display: flex;
+    width: 625px;
+    height: 81px;
+    border-radius: 10px;
+    background-color: #C4C4C4;
+    justify-content: start;
+    margin-bottom: 25px;
+    cursor: pointer;
+}
+article .item-img {
+    width: 45%;
+}
+
+article .item-img img {
+    width: 50%;
+    padding: 3px;
+}
+
+
+article .conteudo-texto-item {
+    width: 45%;
+    align-self: center;
+}
+
+article .conteudo-texto-item p {
+    font-size: 15px;
+    color: red;
+    padding: 0;
+    margin: 0;
+}
+
+article .conteudo-texto-item h3 {
+    font-size: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+hr {
+    padding: 0;
+    margin: 0;
+}

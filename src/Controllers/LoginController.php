@@ -14,7 +14,7 @@ class LoginController {
             die();
         }
 
-        MainView::render('login');
+        MainView::render('login', array('titulo' => 'Login'));
     }
 
     public static function verificaLogin(){

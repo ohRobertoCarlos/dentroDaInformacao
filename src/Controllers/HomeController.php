@@ -12,7 +12,8 @@ class HomeController{
             die();
         }
         
-       MainView::render('home3');
+       MainView::render('item-noticia',
+        array('titulo' => 'Karol saiu :)', 'thumbnail' => 'resources/images/Karol.jpg'));
     }
 
 }
