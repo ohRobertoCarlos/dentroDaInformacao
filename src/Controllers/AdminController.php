@@ -6,7 +6,7 @@ use App\Views\MainView;
 use App\Models\LoginModel;
 
 
-class LoginController {
+class AdminController {
 
     public function index(){
         session_start();
@@ -15,9 +15,8 @@ class LoginController {
             die();
         }
 
-        MainView::render('login', array(
-            'titulo' => 'Login',
-            'titulo_form' => 'Faça Login'
+        MainView::render('admin', array(
+            'titulo' => 'Admin'
         ));
     }
 

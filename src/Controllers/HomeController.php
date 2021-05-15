@@ -6,22 +6,19 @@ use App\Views\MainView;
 class HomeController{
 
     public function index(){
-        session_start();
-        if(!isset($_SESSION['email_login'])){
-            header('Location: login');
-            die();
-        }
-        
-       MainView::render('item-noticia',
+    
+       MainView::render('home',
         array(
-            'titulo' => 'Karol saiu :)',
+            'titulo' => 'Home',
             'thumbnail' => 'resources/images/Karol.jpg',
+            'titulo_noticia' => 'Flamengo ou Fluminense?',
+            'descricao_noticia' => 'Quem ganha o jogo de hoje?' 
         ));
     }
 
 
 
-    public function redirectHome(){
+    public static function redirectHome(){
         header('location: home');
         die();
     }

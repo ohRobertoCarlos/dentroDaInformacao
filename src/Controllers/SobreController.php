@@ -6,7 +6,9 @@ use App\Views\MainView;
 class SobreController{
 
     public function index(){
-       MainView::render('sobre');
+       MainView::render('sobre', array(
+           "titulo" => 'Sobre'
+       ));
     }
 
 }

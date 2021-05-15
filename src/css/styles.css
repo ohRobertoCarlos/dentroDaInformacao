@@ -28,45 +28,43 @@
 
 article {
     display: flex;
-    width: 625px;
-    height: 81px;
+    width: 90%;
+    height: 100px;
     border-radius: 10px;
-    background-color: #c1c1c1;
+    background-color: white;
     justify-content: start;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     cursor: pointer;
     margin-left: 15px;
 }
 article .item-img {
-    width: 300px;
+    width: 30%;
 }
 
 article .item-img img {
-    width: 50%;
-    padding: 3px;
+    width: 80%;
+    padding: 5px;
 }
 
 
 article .conteudo-texto-item {
-    width: 45%;
+    width: 70%;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 article .conteudo-texto-item p {
     font-size: 15px;
-    color: red;
-    padding: 0;
-    margin: 0;
+    color: #c7c7c7;
+    margin: 5px;
+    position: relative;
 }
 
 article .conteudo-texto-item h3 {
-    font-size: 20px;
-    padding: 0;
-    margin: 0;
-}
-
-hr {
-    padding: 0;
-    margin: 0;
+    font-size: 25px;
+    margin: 5px;
+    margin-bottom: 15px;
 }
 
 footer{
@@ -74,11 +72,13 @@ footer{
     bottom: 0;
     width: 100%;
     display: block;
+    margin-top: 10px;
     padding: 15px;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end;
     background-color: blue;
     color: white;
+    text-align: center;
 }
 
 header{
@@ -110,4 +110,33 @@ header ul li a {
 header ul li a:hover {
     background-color: white;
     color: black;
+}
+
+.conteiner-home {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.conteiner-home main {
+    background-color: #e7e3e3;
+    width: 60%;
+    height: 100%;
+    margin: 10px 5px 15px 10px;
+    padding: 5px;
+    
+}
+
+.conteiner-home aside {
+    background-color: #e7e3e3;
+    width: 35%;
+    height: 50vh;
+    margin: 10px 10px 15px 0px;
+    padding: 5px;
+}
+
+.conteiner-home .titulo-main {
+    padding: 5px;
+    color: black;
+    font-weight: 600;
 }

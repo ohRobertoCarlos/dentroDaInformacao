@@ -1,4 +1,12 @@
 {
+    "name": "projeto/blog",
+    "description": "Blog de notícias",
+    "authors": [
+        {
+            "name": "Roberto Carlos",
+            "email": "robertocarlosdeveloper@gmail.com"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "App\\": "src/"
