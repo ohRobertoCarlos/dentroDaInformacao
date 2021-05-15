@@ -31,13 +31,14 @@ article {
     width: 625px;
     height: 81px;
     border-radius: 10px;
-    background-color: #C4C4C4;
+    background-color: #c1c1c1;
     justify-content: start;
     margin-bottom: 25px;
     cursor: pointer;
+    margin-left: 15px;
 }
 article .item-img {
-    width: 45%;
+    width: 300px;
 }
 
 article .item-img img {
@@ -48,7 +49,6 @@ article .item-img img {
 
 article .conteudo-texto-item {
     width: 45%;
-    align-self: center;
 }
 
 article .conteudo-texto-item p {
@@ -67,4 +67,47 @@ article .conteudo-texto-item h3 {
 hr {
     padding: 0;
     margin: 0;
+}
+
+footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: block;
+    padding: 15px;
+    justify-content: center;
+    align-items: center;
+    background-color: blue;
+    color: white;
+}
+
+header{
+    justify-content: space-between;
+    padding: 15px;
+    background-color: blue;
+    color: white;
+}
+
+header span {
+    font-size: 25px;
+}
+
+header ul {
+    display: flex;
+    float: right;
+    list-style: none;
+}
+
+header ul li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 4px;
+}
+
+header ul li a:hover {
+    background-color: white;
+    color: black;
 }

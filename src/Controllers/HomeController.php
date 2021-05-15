@@ -13,8 +13,17 @@ class HomeController{
         }
         
        MainView::render('item-noticia',
-        array('titulo' => 'Karol saiu :)', 'thumbnail' => 'resources/images/Karol.jpg'));
+        array(
+            'titulo' => 'Karol saiu :)',
+            'thumbnail' => 'resources/images/Karol.jpg',
+        ));
+    }
+
+
+
+    public function redirectHome(){
+        header('location: home');
+        die();
     }
 
 }
-?>

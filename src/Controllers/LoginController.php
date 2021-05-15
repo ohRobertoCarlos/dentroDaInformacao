@@ -9,12 +9,16 @@ use App\Models\LoginModel;
 class LoginController {
 
     public function index(){
-        if(isset($_SESSION['nome'])){
+        session_start();
+        if(isset($_SESSION['email_login'])){
             header('Location: home');
             die();
         }
 
-        MainView::render('login', array('titulo' => 'Login'));
+        MainView::render('login', array(
+            'titulo' => 'Login',
+            'titulo_form' => 'Faça Login'
+        ));
     }
 
     public static function verificaLogin(){
@@ -34,5 +38,12 @@ class LoginController {
         }
            
         
+    }
+
+    public function sairSessao(){
+        session_start();
+        unset($_SESSION['email_login']);
+        header('location: login');
+        die();
     }
 }
