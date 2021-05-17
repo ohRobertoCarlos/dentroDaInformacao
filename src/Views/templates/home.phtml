@@ -1,53 +1,28 @@
+
+<?php include 'header.phtml' ?>
+
 <di class="conteiner-home">
     <main>
 
     <h2 class="titulo-main">Últimas Notícias</h2>
+
+    <?php foreach($dados['noticias'] as $dado){ ?>
         <article>
             <div class="item-img">
-                <img src="resources/images/Karol.jpg" alt="Karol">
+                <img src="<?=$dado->thumbnail?>" alt="Karol">
             </div>
 
             <div class="conteudo-texto-item">
-                <h3>Karol Conká sai do BBB</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolorum veritatis laborum dicta natus nesciunt, molestiae quaerat esse dolores perferendis porro velit quasi eum amet quidem tenetur dolor numquam illum.</p>
+                <a href="<?=PATH_INDEX?>noticia?slug=<?=$dado->slug?>"><h3><?=$dado->titulo?></h3></a>
+                <p><?=$dado->descricao?></p>
             </div>
         </article>
-
-        <article>
-            <div class="item-img">
-                <img src="resources/images/Karol.jpg" alt="Karol">
-            </div>
-
-            <div class="conteudo-texto-item">
-                <h3>Karol Conká sai do BBB</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolorum veritatis laborum dicta natus nesciunt, molestiae quaerat esse dolores perferendis porro velit quasi eum amet quidem tenetur dolor numquam illum.</p>
-            </div>
-        </article>
-
-        <article>
-            <div class="item-img">
-                <img src="resources/images/Karol.jpg" alt="Karol">
-            </div>
-
-            <div class="conteudo-texto-item">
-                <h3>{{titulo_noticia}}</h3>
-                <p>{{descricao_noticia}}</p>
-            </div>
-        </article>
-
-        <article>
-            <div class="item-img">
-                <img src="resources/images/Karol.jpg" alt="Karol">
-            </div>
-
-            <div class="conteudo-texto-item">
-                <h3>Karol Conká sai do BBB</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Et dolorum veritatis laborum dicta natus nesciunt, molestiae quaerat esse dolores perferendis porro velit quasi eum amet quidem tenetur dolor numquam illum.</p>
-            </div>
-        </article>
-
+    <?php } ?>
+        <span><a class="link" href="<?=PATH_INDEX?>todas-noticias">Todas Notícias?</a></span>
     </main>
     <aside>
         <h2 class="titulo-main">Em Destaque</h2>
     </aside>
 </div>
+
+<?php include 'footer.phtml';

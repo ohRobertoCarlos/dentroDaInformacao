@@ -11,12 +11,13 @@ class AdminController {
     public function index(){
         session_start();
         if(isset($_SESSION['email_login'])){
-            header('Location: home');
+            $caminho = PATH_INDEX. 'painel';
+            header('Location: '.$caminho);
             die();
         }
 
-        MainView::render('admin', array(
-            'titulo' => 'Admin'
+        MainView::render('admin-login', array(
+            'titulo' => 'Admin - Login'
         ));
     }
 
@@ -30,7 +31,8 @@ class AdminController {
         if($existeUsuario != false){
             session_start();
             $_SESSION['email_login'] = $existeUsuario['email_login'];
-            header('location: home');
+            $caminho = PATH_INDEX. 'home';
+            header('location: '. $caminho);
             die();
         }else{
             echo 'usuario ou senha incorretos!';
@@ -44,5 +46,11 @@ class AdminController {
         unset($_SESSION['email_login']);
         header('location: login');
         die();
+    }
+
+    public function home(){
+        MainView::render('painel-home', array(
+            'titulo' => 'Painel - HOME'
+        ));
     }
 }

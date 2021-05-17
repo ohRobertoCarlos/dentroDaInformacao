@@ -6,6 +6,8 @@ const DBNAME = 'dentro_da_informacao';
 const USER = 'root';
 const PASSWORD = '';
 
+const PATH_INDEX = 'http://localhost/blogDentroDaInformacao/';
+
 require 'vendor/autoload.php';
 
 require 'Application.php';
