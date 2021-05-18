@@ -8,7 +8,8 @@ class ContatoController {
 
     public function index(){
         MainView::render('contato', array(
-            'titulo' => 'Contato'
-        ));
+            'titulo' => 'Contato',
+            'icon' => 'icon_contato.png'
+        ));  
     }
 }

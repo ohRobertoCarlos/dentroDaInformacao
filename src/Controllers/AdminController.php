@@ -44,7 +44,7 @@ class AdminController {
     public function sairSessao(){
         session_start();
         unset($_SESSION['email_login']);
-        header('location: login');
+        header('location: admin-login');
         die();
     }
 

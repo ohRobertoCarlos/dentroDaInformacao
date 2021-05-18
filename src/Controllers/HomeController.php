@@ -13,7 +13,8 @@ class HomeController{
         
         MainView::render('home',array(
             'titulo' => 'Home',
-            'noticias' => $noticias
+            'noticias' => $noticias,
+            'icon' => 'icon_home.png'
         ), false);
     }
 
