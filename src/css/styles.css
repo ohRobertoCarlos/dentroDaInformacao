@@ -40,8 +40,9 @@ article {
     background-color: white;
     justify-content: start;
     margin-bottom: 15px;
-    cursor: pointer;
     margin-left: 15px;
+    text-overflow: ellipsis;
+    padding-right: 20px;
 }
 article .item-img {
     width: 30%;
@@ -58,9 +59,11 @@ article .item-img img {
 
 article .conteudo-texto-item {
     width: 70%;
+    font-size: 12px;
 
     overflow: hidden;
     text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 article .conteudo-texto-item p {
@@ -83,6 +86,8 @@ article .conteudo-texto-item h3 {
     font-size: 25px;
     margin: 5px;
     margin-bottom: 15px;
+    cursor: pointer;
+    text-overflow: ellipsis;
 }
 
 footer{
@@ -164,4 +169,29 @@ header ul li a:hover {
     padding: 5px;
     color: black;
     font-weight: 600;
+}
+
+.conteiner-painel {
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid red;
+    text-align: justify;
+}
+
+.conteiner-painel span {
+    display: block;
+    font-size: 20px;
+    padding: 10px;
+    background-color: #c4c4c4;
+
+}
+
+.conteiner-painel ul li {
+    display: inline-block;
+    width: 30%;
+    height: 100px;
+    border: 1px solid red;
+    padding: 5px;
+    margin: 5px;
 }
