@@ -6,7 +6,7 @@ const DBNAME = 'dentro_da_informacao';
 const USER = 'root';
 const PASSWORD = '';
 
-const PATH_INDEX = 'http://localhost/DentroDaInformacao/';
+const PATH_INDEX = 'http://localhost/dentroDaInformacao/';
 
 require 'vendor/autoload.php';
 

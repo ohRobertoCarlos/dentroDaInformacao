@@ -195,3 +195,46 @@ header ul li a:hover {
     padding: 5px;
     margin: 5px;
 }
+
+.conteiner-contato{
+    width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    align-items: stretch;
+}
+
+.conteiner-contato .nosso-contato {
+    width: 45%;
+    display: inline-block;
+    margin-top:80px;
+    border-right: 1px solid black;
+}
+.conteiner-contato .nosso-contato div {
+    display: block;
+    margin: 5px;
+}
+
+.conteiner-contato .nosso-contato span {
+    font-weight: bolder;
+}
+
+.conteiner-contato .contato-user {
+    width: 45%;
+    display: inline-block;
+    margin-top:80px;
+    padding-left: 70px;
+}
+
+.conteiner-contato .contato-user input {
+    display: block;
+    width: 80%;
+    padding: 7px;
+    margin: 20px auto;
+}
+
+.conteiner-contato .contato-user input[type=submit]{
+    width: 100px;
+    background-color: blue;
+    color: white;
+}

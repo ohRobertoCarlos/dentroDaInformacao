@@ -1,6 +1,34 @@
 
 <?php include 'header.phtml'?>
 
-<h2>Aqui é a página de contato</h2>
+<main class="conteiner-contato">
+    <div class="nosso-contato">
+        <h4>Nosso Contato:</h4>
+        <div>
+            <span>E-mail:</span> <a>Nossocontato@email.com</a>
+        </div>
+
+        <div>
+            <span>Whatsapp:</span> <a>(74) 999999999</a>
+        </div>
+
+        <div>
+            <span>Facebook:</span> <a>nossopagina.facebook.com</a>
+        </div>
+    </div>
+
+    <div class="contato-user">
+        <h4>Envie o seu contato:</h4>
+        <form>
+            <input type="text" name="nome" id="nome" placeholder="Nome..." />    
+
+            <input type="number" name="telefone" id="telefone" placeholder="Telefone..." />
+
+            <input type="email" name="email" id="email" placeholder="E-mail..." />
+
+            <input class="btn" type="submit" value="Enviar" />
+        </form>
+    </div>
+</main>
 
 <?php include 'footer.phtml'?>
