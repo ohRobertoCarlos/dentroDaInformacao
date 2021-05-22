@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Views\MainView;
+use App\Models\ContatoModel;
 
 class ContatoController {
 
@@ -11,5 +12,21 @@ class ContatoController {
             'titulo' => 'Contato',
             'icon' => 'icon_contato.png'
         ));  
+    }
+
+
+    public function enviarContato(){
+        $model = new ContatoModel;
+
+        if($model->salvarUsuario()){
+            $caminho = PATH_INDEX.'contato?send=true';
+            header('Location: '.$caminho);
+            die();
+        }else{
+            $caminho = PATH_INDEX.'contato?error=email-existe';
+            header('Location: '.$caminho);
+            die();
+        }
+        
     }
 }

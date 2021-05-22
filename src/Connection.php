@@ -2,7 +2,7 @@
 
 namespace App;
 
-class Connection{
+class Connection{ 
 
 
 	public static function connect(){

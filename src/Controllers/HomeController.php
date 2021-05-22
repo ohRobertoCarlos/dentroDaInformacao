@@ -4,7 +4,7 @@ namespace App\Controllers;
 use App\Views\MainView;
 use App\Models\HomeModel;
 
-class HomeController{
+class HomeController{ 
 
     public function index(){
         $model = new HomeModel;
@@ -15,7 +15,7 @@ class HomeController{
             'titulo' => 'Home',
             'noticias' => $noticias,
             'icon' => 'icon_home.png'
-        ), false);
+        ));
     }
 
 

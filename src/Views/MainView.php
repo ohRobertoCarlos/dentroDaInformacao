@@ -2,7 +2,7 @@
 namespace App\Views;
 
 class MainView{
-    public static function render($view,$dados = [],$useIndex = true){
+    public static function render($view,$dados = []){
 
         include 'src/Views/templates/' .$view. '.phtml'; 
 

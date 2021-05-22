@@ -1,6 +1,20 @@
 
 <?php include 'header.phtml'?>
 
+<?php if(isset($_GET['send'])) { ?>
+    <div class="send-success">
+        <span>Contato enviado com sucesso!</span>
+    </div>
+
+    <?php } ?>
+
+    <?php if(isset($_GET['error'])) { ?>
+    <div class="send-error">
+        <span>Esse e-mail já existe. Use outro :)</span>
+    </div>
+
+    <?php } ?>
+
 <main class="conteiner-contato">
     <div class="nosso-contato">
         <h4>Nosso Contato:</h4>
@@ -19,12 +33,12 @@
 
     <div class="contato-user">
         <h4>Envie o seu contato:</h4>
-        <form>
-            <input type="text" name="nome" id="nome" placeholder="Nome..." />    
+        <form method="post" action="enviar-contato">
+            <input type="text" name="nome" id="nome" placeholder="Nome..."  required="required"/>    
 
-            <input type="number" name="telefone" id="telefone" placeholder="Telefone..." />
+            <input type="number" name="telefone" id="telefone" placeholder="Telefone..." required="required"/>
 
-            <input type="email" name="email" id="email" placeholder="E-mail..." />
+            <input type="email" name="email" id="email" placeholder="E-mail..." required="required"/>
 
             <input class="btn" type="submit" value="Enviar" />
         </form>

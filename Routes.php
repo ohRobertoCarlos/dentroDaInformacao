@@ -11,6 +11,7 @@ Application::get('sair','admin','sairSessao');
 Application::get('contato','contato','index');
 Application::get('painel','admin','home');
 Application::get('noticia','home','mostrarNoticia');
+Application::get('enviar-contato','contato','enviarContato');
 
 
 ?>

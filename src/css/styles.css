@@ -175,7 +175,6 @@ header ul li a:hover {
     width: 70%;
     margin: 0 auto;
     padding: 20px;
-    border: 1px solid red;
     text-align: justify;
 }
 
@@ -191,7 +190,7 @@ header ul li a:hover {
     display: inline-block;
     width: 30%;
     height: 100px;
-    border: 1px solid red;
+    border: 1px solid blue;
     padding: 5px;
     margin: 5px;
 }
@@ -237,4 +236,41 @@ header ul li a:hover {
     width: 100px;
     background-color: blue;
     color: white;
+}
+
+a .fa-sign-out-alt{
+    cursor: pointer;
+    float: right;
+    font-size: 20px;
+    margin: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.send-success {
+    display: block;
+    height: 50px;
+    background-color: green;
+    width: 100%;
+    text-align: center;
+}
+
+.send-success span {
+    color: white;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.send-error {
+    display: block;
+    height: 50px;
+    background-color: red;
+    width: 100%;
+    text-align: center;
+}
+
+.send-error span {
+    color: white;
+    font-weight: 600;
+    font-size: 22px;
 }

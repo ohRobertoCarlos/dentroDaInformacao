@@ -31,7 +31,7 @@ class AdminController {
         if($existeUsuario != false){
             session_start();
             $_SESSION['email_login'] = $existeUsuario['email_login'];
-            $caminho = PATH_INDEX. 'home';
+            $caminho = PATH_INDEX. 'admin-login';
             header('location: '. $caminho);
             die();
         }else{
