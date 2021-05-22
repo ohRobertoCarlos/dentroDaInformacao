@@ -250,7 +250,7 @@ a .fa-sign-out-alt{
 .send-success {
     display: block;
     height: 50px;
-    background-color: green;
+    background-color: #6BFD65;
     width: 100%;
     text-align: center;
 }

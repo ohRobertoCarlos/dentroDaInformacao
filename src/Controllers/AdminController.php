@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Views\MainView;
-use App\Models\LoginModel;
+use App\Models\AdminModel;
 
 
 class AdminController {
@@ -26,7 +26,7 @@ class AdminController {
 
 
     public function consultarLogin(){
-        $model = new LoginModel;
+        $model = new AdminModel;
         $existeUsuario = $model->consultarUsuario();
         if($existeUsuario != false){
             session_start();

@@ -23,7 +23,7 @@ class ContatoController {
             header('Location: '.$caminho);
             die();
         }else{
-            $caminho = PATH_INDEX.'contato?error=email-existe';
+            $caminho = PATH_INDEX.'contato?error=error';
             header('Location: '.$caminho);
             die();
         }

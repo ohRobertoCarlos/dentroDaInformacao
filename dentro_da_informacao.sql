@@ -1,31 +1,12 @@
--- phpMyAdmin SQL Dump
--- version 5.0.4
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Tempo de geração: 11-Maio-2021 às 03:06
--- Versão do servidor: 10.4.17-MariaDB
--- versão do PHP: 8.0.0
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
---
--- Banco de dados: `dentro_da_informacao`
---
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `contato`
---
 
 CREATE TABLE `contato` (
   `id` int(11) NOT NULL,
@@ -33,12 +14,6 @@ CREATE TABLE `contato` (
   `telefone` varchar(15) NOT NULL,
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `noticia`
---
 
 CREATE TABLE `noticia` (
   `id` int(11) NOT NULL,
@@ -52,23 +27,21 @@ CREATE TABLE `noticia` (
   `slug` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `usuario`
---
+INSERT INTO `noticia` (`id`, `titulo`, `subtitulo`, `texto_conteudo`, `id_autor`, `thumbnail`, `data_publicacao`, `descricao`, `slug`) VALUES
+(1, 'River-Plate improvisa jogador de linha no gol', 'Lorem ipsum dolor sit amet, consectetur adiLorem ipsu', 'Lorem ipsum dolor sit amet, consectetur adiLorem ipsum dolor sit amet, consectetur adiLorem ipsum dolor sit amet, consectetur adiLorem ipsum dolor sit amet, consectetur adi', 1, 'resources/images/futebol.jpg', '2021-05-19', 'river...', 'river-improvisa'),
+(2, 'Mc morre por fato curioso', 'r adiLorem ipsum dolor sit amet, consectet', 'r adiLorem ipsum dolor sit amet, consectetur adiLorem ipsum dolor sit amet, consectetur adiLorem ipsum dolor sit amet, consectetur adiLorem ipsum dolor sit amet, consectetur adiLorem ipsum dolor sit amet, consectetur adiLorem ipsum dolor sit amet, consectetu', 1, 'resources/images/futebol.jpg', '2021-05-19', 'A polícia investiga, mas causa da morte pode ter sido aventura sexual', 'mc-morre-fato-curioso');
 
 CREATE TABLE `usuario` (
   `id` int(11) NOT NULL,
   `nome` varchar(50) NOT NULL,
-  `is_admin` tinyint(1) DEFAULT NULL
+  `is_admin` tinyint(1) DEFAULT '0',
+  `email` varchar(255) NOT NULL,
+  `telefone` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
-
---
--- Estrutura da tabela `usuario_admin`
---
+INSERT INTO `usuario` (`id`, `nome`, `is_admin`, `email`, `telefone`) VALUES
+(1, 'Roberto', 1, '', ''),
+(3, 'jose', 0, 'jose@gmail.com', '62999999999');
 
 CREATE TABLE `usuario_admin` (
   `id` int(11) NOT NULL,
@@ -77,84 +50,45 @@ CREATE TABLE `usuario_admin` (
   `id_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Índices para tabelas despejadas
---
+INSERT INTO `usuario_admin` (`id`, `email_login`, `senha`, `id_usuario`) VALUES
+(1, 'roberto@email.com', '1234', 1);
 
---
--- Índices para tabela `contato`
---
+
 ALTER TABLE `contato`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_usuario` (`id_usuario`);
 
---
--- Índices para tabela `noticia`
---
 ALTER TABLE `noticia`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_autor` (`id_autor`);
 
---
--- Índices para tabela `usuario`
---
 ALTER TABLE `usuario`
   ADD PRIMARY KEY (`id`);
 
---
--- Índices para tabela `usuario_admin`
---
 ALTER TABLE `usuario_admin`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_usuario` (`id_usuario`);
 
---
--- AUTO_INCREMENT de tabelas despejadas
---
 
---
--- AUTO_INCREMENT de tabela `contato`
---
 ALTER TABLE `contato`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
---
--- AUTO_INCREMENT de tabela `noticia`
---
 ALTER TABLE `noticia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
---
--- AUTO_INCREMENT de tabela `usuario`
---
 ALTER TABLE `usuario`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
---
--- AUTO_INCREMENT de tabela `usuario_admin`
---
 ALTER TABLE `usuario_admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
---
--- Restrições para despejos de tabelas
---
 
---
--- Limitadores para a tabela `contato`
---
 ALTER TABLE `contato`
   ADD CONSTRAINT `contato_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
 
---
--- Limitadores para a tabela `noticia`
---
 ALTER TABLE `noticia`
   ADD CONSTRAINT `noticia_ibfk_1` FOREIGN KEY (`id_autor`) REFERENCES `usuario_admin` (`id`);
 
---
--- Limitadores para a tabela `usuario_admin`
---
 ALTER TABLE `usuario_admin`
   ADD CONSTRAINT `usuario_admin_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`);
 COMMIT;

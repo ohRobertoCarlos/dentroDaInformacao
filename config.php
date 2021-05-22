@@ -1,5 +1,6 @@
 <?php
 date_default_timezone_set('America/Sao_Paulo');
+ini_set('display_errors','on');
 
 const HOST = 'localhost';
 const DBNAME = 'dentro_da_informacao';

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Connection;
 
-class LoginModel{
+class AdminModel{
 
     public function consultarUsuario(){
 
