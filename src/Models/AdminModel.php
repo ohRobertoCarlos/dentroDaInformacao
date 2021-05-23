@@ -6,6 +6,7 @@ use App\Connection;
 
 class AdminModel{
 
+    //Consultar se usuário existe
     public function consultarUsuario(){
 
         $senha = isset($_POST['senha']) ? $_POST['senha'] : '' ;
@@ -22,5 +23,11 @@ class AdminModel{
         }
 
         return $stmt->fetch(\PDO::FETCH_ASSOC);
+    }
+
+    //Buscar noticias com base no intervalo definido
+    public function totalNoticias(String $intervalo){
+        $dataAtual = date($intervalo);
+        echo $dataAtual;
     }
 }

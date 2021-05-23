@@ -48,11 +48,16 @@ class HomeController{
         $slug = isset($_GET['slug']) ? $_GET['slug'] : '';
         $model = new HomeModel;
         $noticia = $model->mostrarNoticia($slug);
+
+        if($noticia != false){
+            MainView::render('noticia',array(
+                'titulo' => $noticia->titulo,
+                'noticia' => $noticia
+            ));
+        }else{
+            MainView::render('noticia-nao-encontrada');
+        }
         
-        MainView::render('noticia',array(
-            'titulo' => $noticia->titulo,
-            'noticia' => $noticia
-        ));
     }
 
 }

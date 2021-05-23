@@ -20,6 +20,13 @@ class ContatoModel {
         $telefone = isset($_POST['telefone']) ? $_POST['telefone'] : '';
         $email = isset($_POST['email']) ? $_POST['email'] : '';
 
+        strval($telefone);
+
+        if(strlen($telefone) != 11){
+            header('Location: http://www.google.com');
+            return false;
+        }
+
         $sql = "INSERT INTO usuario(nome,telefone,email) VALUES (:nome,:telefone,:email)";
 
         $db = Connection::connect();

@@ -1,8 +1,13 @@
 
 <?php include 'header.phtml' ?>
 
-<h2><?=$dados['noticia']->titulo?></h2>
-<hr>
-<p><?=$dados['noticia']->texto_conteudo?></p>
+<main class="conteiner-noticia"> 
+    <h2><?=$dados['noticia']->titulo?></h2>
+    <hr>
+    <span class="data-publicacao">Publicado em <?=$dados['noticia']->data_publicacao?></span>
+    <p><?=$dados['noticia']->texto_conteudo?></p>
+</main>
+
+
 
 <?php include 'footer.phtml' ?>

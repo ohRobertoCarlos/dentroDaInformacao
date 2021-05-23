@@ -2,7 +2,6 @@
 
 class Application{
 
-	private $isExecuted = false;
 
 	public static function getUrl(){
 		//Se a rota for a raiz, retorna o que tiver nesta rota

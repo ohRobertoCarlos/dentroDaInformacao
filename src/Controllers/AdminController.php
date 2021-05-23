@@ -49,6 +49,7 @@ class AdminController {
     }
 
     public function home(){
+
         MainView::render('painel-home', array(
             'titulo' => 'Painel - HOME'
         ));

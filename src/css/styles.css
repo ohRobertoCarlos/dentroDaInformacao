@@ -16,6 +16,11 @@
     cursor: pointer;
 }
 
+.center {
+    margin:auto;
+    text-align: center;
+}
+
 .conteiner input[type="email"],.conteiner input[type="password"] {
     display: block;
     width: 70%;
@@ -106,7 +111,9 @@ footer{
 }
 
 header{
+    display: flex;
     justify-content: space-between;
+    align-items: baseline;
     padding: 15px;
     background-color: blue;
     color: white;
@@ -273,4 +280,11 @@ a .fa-sign-out-alt{
     color: white;
     font-weight: 600;
     font-size: 22px;
+}
+
+.conteiner-noticia {
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px;
+    border: 1px solid green;
 }
