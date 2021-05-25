@@ -288,3 +288,9 @@ a .fa-sign-out-alt{
     padding: 10px;
     border: 1px solid green;
 }
+
+@media screen and (max-width: 1266px) {
+    footer{
+        position: relative;
+    }
+}

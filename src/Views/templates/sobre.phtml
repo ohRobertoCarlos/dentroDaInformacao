@@ -1,28 +1,10 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="src/css/styles.css">
-    <link rel="stylesheet" href="src/css/sobreestilo.css">
-    <title>Sobre</title>
-</head>
-<body>
-<header>
-    <span>Dentro da Informação</span>
-    <ul>
-        <li><a href="<?=PATH_INDEX?>home">Home</a></li>
-        <li><a href="<?=PATH_INDEX?>contato">Contato</a></li>
-        <li><a href="<?=PATH_INDEX?>sobre">Sobre</a></li>
-        <li><a href="<?=PATH_INDEX?>admin-login">ADM</a></li>
-    </ul>
-</header>
-    <h1 id="cabecalho">Dentro da informação</h1>
+<?php include 'header.phtml' ?>
+
+<body class="body-sobre">
         
       <fieldset id="oquesomos">
          <legend>O que somos?</legend>
-            <p>Em linguística, a noção de texto é ampla e ainda aberta a uma definição mais precisa. Grosso modo, pode ser entendido como manifestação linguística das ideias de um autor, que serão interpretadas pelo leitor de acordo com seus conhecimentos linguísticos e culturais. Seu tamanho é variável.
+            <p class="texto-sobre">Em linguística, a noção de texto é ampla e ainda aberta a uma definição mais precisa. Grosso modo, pode ser entendido como manifestação linguística das ideias de um autor, que serão interpretadas pelo leitor de acordo com seus conhecimentos linguísticos e culturais. Seu tamanho é variável.
 
                 “Conjunto de palavras e frases articuladas, escritas sobre qualquer suporte”.[1]
                 
@@ -38,11 +20,7 @@
                 
                 Em artes gráficas, o texto é a parte verbal, linguística, por oposição às ilustrações.</p>
       </fieldset> 
-       <input type="button" value="Voltar" id="botao" onClick="history.go(-1)">
-       <a  id="central"href="">Central ajuda</a>
-         <br>
-       <a  id="contato" href="">Contato</a>
 
-       <?php include 'footer.phtml ' ?>
 </body>
+    <?php include 'footer.phtml ' ?>
 </html>

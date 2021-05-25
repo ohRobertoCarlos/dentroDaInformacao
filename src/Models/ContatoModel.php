@@ -23,7 +23,6 @@ class ContatoModel {
         strval($telefone);
 
         if(strlen($telefone) != 11){
-            header('Location: http://www.google.com');
             return false;
         }
 
