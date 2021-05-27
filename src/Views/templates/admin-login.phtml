@@ -2,14 +2,16 @@
 
 <?php include 'header.phtml'?>
 
-<div class="conteiner mt-5">
-<form method="post" action="consultaLogin">
+<div class="conteiner-login">
+    <form method="post" action="consultaLogin">
+    <h1>Login</h1>
+        <label>Email:</label>
+        <input type="email" name="email_login" required="required">
+        <label>Senha:</label>
+        <input type="password" name="senha" required="required">
+        <input type="submit" name="acao" value="Logar">
 
-<input type="email" name="email_login" required="required">
-<input type="password" name="senha" required="required">
-<input type="submit" name="acao" value="Logar">
-
-</form>
+    </form>
 </div>
 
 <?php include 'footer.phtml'?>
