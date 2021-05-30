@@ -54,4 +54,10 @@ class AdminController {
             'titulo' => 'Painel - HOME'
         ));
     }
+
+    public function adicionarNoticia(){
+        MainView::render('cadastrar-noticia', array(
+            'titulo' => 'Adicionar Notícia'
+        ));
+    }
 }

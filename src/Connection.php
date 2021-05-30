@@ -10,7 +10,7 @@ class Connection{
 		try{
 			$db = new \PDO('mysql:host='. HOST .';dbname=' .DBNAME. ';charset=utf8',USER,PASSWORD);
 		}catch(PDOException $e){
-			echo 'Algo de errado!!';
+			die("<h3>Não foi possível estabelecer comunicação com o banco de dados</h3>");
 		}
 
 		return $db;

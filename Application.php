@@ -34,7 +34,7 @@ class Application{
 					$newController = new $class;
 					$newController->$func();
 				}catch(Exception $e){
-					echo 'algo deu ruim! :(';
+					echo "Erro!";
 				}
 			}else{
 				return false;

@@ -8,7 +8,7 @@ class HomeModel {
 
     public function getNoticias(){
         $db = Connection::connect();
-        $stmt = $db->prepare('SELECT * FROM noticia ORDER BY data_publicacao LIMIT 4');
+        $stmt = $db->prepare('SELECT * FROM noticia ORDER BY data_publicacao desc LIMIT 4');
         $stmt->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
