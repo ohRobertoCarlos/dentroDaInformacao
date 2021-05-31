@@ -56,6 +56,7 @@ class AdminController {
     }
 
     public function adicionarNoticia(){
+        
         MainView::render('cadastrar-noticia', array(
             'titulo' => 'Adicionar Notícia'
         ));

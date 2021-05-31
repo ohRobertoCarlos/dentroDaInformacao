@@ -13,6 +13,7 @@ Application::get('painel','admin','home');
 Application::get('noticia','home','mostrarNoticia');
 Application::get('enviar-contato','contato','enviarContato');
 Application::get('adicionar-noticia','admin','adicionarNoticia');
+Application::get('todas-noticias','home','todasNoticias');
 
 
 ?>

@@ -55,9 +55,20 @@ class HomeController{
                 'noticia' => $noticia
             ));
         }else{
-            MainView::render('noticia-nao-encontrada');
+            MainView::render('noticia-nao-encontrada',array(
+                'titulo' => 'Error'
+            ));
         }
         
+    }
+
+    public function todasNoticias(){
+        $model = new HomeModel;
+        $noticias = $model->todasNoticias();
+
+        echo '<pre>';
+        print_r($noticias);
+        echo '</pre>';
     }
 
 }

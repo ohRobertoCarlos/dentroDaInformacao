@@ -27,4 +27,15 @@ class HomeModel {
         }
 
     }
+
+    public function todasNoticias(){
+        //estabelço conexão com banco
+        $db = Connection::connect();
+
+        //Query para buscar todas noticias
+        $stmt = $db->prepare('SELECT * FROM noticia');
+        $stmt->execute();
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+    }
 }

@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Lexend,'sans-serif';
 }
 
 .conteiner-login {
@@ -182,7 +185,7 @@ header ul li a:hover {
 .conteiner-home .titulo-main {
     padding: 5px;
     color: black;
-    font-weight: 600;
+    font-weight: bold;
 }
 
 .conteiner-painel {
@@ -190,6 +193,11 @@ header ul li a:hover {
     margin: 0 auto;
     padding: 20px;
     text-align: justify;
+}
+
+.conteiner-painel section {
+    display: flex;
+    justify-content: space-around;
 }
 
 .conteiner-painel span {
@@ -271,7 +279,7 @@ a .fa-sign-out-alt{
 
 .send-success span {
     color: white;
-    font-weight: 600;
+    font-weight: bold;
     font-size: 22px;
 }
 
@@ -285,7 +293,7 @@ a .fa-sign-out-alt{
 
 .send-error span {
     color: white;
-    font-weight: 600;
+    font-weight: bold;
     font-size: 22px;
 }
 

@@ -1,7 +1,15 @@
 
-<?php include 'header.phtml' ?>
+<?php include 'header.phtml'?>
 
 <h2>Estamos em adicionar notícia</h2>
-<textarea class="mt-4" id="editorNoticia"></textarea>
+
+<form>
+    <input class="mt-4" name="titulo" type="text" placeholder="Título"/>
+    <input class="mt-4" name="descricao" type="text" placeholder="descrição"/>
+    <textarea class="mt-4" name="conteudo" id="editorNoticia"></textarea>
+
+    <input class="btn btn-success" type="submit" value="Cadastrar :)"/>
+</form>
+
 
 <?php include 'footer.phtml' ?>
