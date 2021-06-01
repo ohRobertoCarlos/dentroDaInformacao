@@ -1,15 +1,38 @@
 
 <?php include 'header.phtml'?>
 
-<h2>Estamos em adicionar notícia</h2>
+<main class="conteiner-adi-noticia">
 
-<form>
-    <input class="mt-4" name="titulo" type="text" placeholder="Título"/>
-    <input class="mt-4" name="descricao" type="text" placeholder="descrição"/>
-    <textarea class="mt-4" name="conteudo" id="editorNoticia"></textarea>
+    <h2>Cadastrar Notícia</h2>
 
-    <input class="btn btn-success" type="submit" value="Cadastrar :)"/>
-</form>
+    <form method="post" action="<?=PATH_INDEX?>salvar-noticia">
+
+        <label>Título da Notícia:</label>
+        <input name="titulo" type="text" placeholder="Título" required="required"/>
+
+        <label>Sub-título da Notícia:</label>
+        <input name="subtitulo" type="text" placeholder="Sub-Título" required="required"/>
+
+        <label>Descrição da Notícia:</label>
+        <input name="descricao" type="text" placeholder="descrição" required="required"/>
+
+        <label>Capa da Notícia:</label>
+        <input name="imagem-capa" type="file" placeholder="Adicione uma capa..."/>
+
+        <label for="editorNoticia">Conteúdo da Notícia:</label>
+        <textarea class="mt-4" name="conteudo" id="editorNoticia"></textarea>
+
+        <input class="btn btn-success" type="submit" value="Cadastrar :)"/>
+    </form>
+
+</main>
 
 
-<?php include 'footer.phtml' ?>
+<footer class="footer-adi-noticia">
+<span>Todos Direitos Reservados - 2021</span>
+</footer>
+
+<script src="src/js/all.min.js"></script>
+<script src="src/js/scripts.js"></script>
+<script src="https://cdn.tiny.cloud/1/60xobe09a2ftk9t3vs8hz0h0ltzbqatf82xwi6g3gvdthm8n/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="src/js/tinymce.js"></script>

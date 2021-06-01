@@ -61,4 +61,9 @@ class AdminController {
             'titulo' => 'Adicionar Notícia'
         ));
     }
+
+    public function salvarNoticia(){
+        $model = new AdminModel;
+        $model->salvarNoticia();
+    }
 }

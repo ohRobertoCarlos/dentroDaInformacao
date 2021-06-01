@@ -30,4 +30,16 @@ class AdminModel{
         $dataAtual = date($intervalo);
         echo $dataAtual;
     }
+
+
+    public function salvarNoticia(){
+        $titulo = isset($_POST['titulo']) ? $_POST['titulo'] : '';
+        $subtitulo = isset($_POST['subtitulo']) ? $_POST['subtitulo'] : '';
+        $descricao = isset($_POST['descricao']) ? $_POST['descricao'] : '';
+        $nomeCapa = isset($_POST['imagem-capa']) ? $_POST['imagem-capa'] : '';
+        $caminhoCapa = 'resources/images/'.$nomeCapa;
+        $conteudo = isset($_POST['conteudo']) ? $_POST['conteudo'] : '';
+
+        echo $caminhoCapa;
+    }
 }
