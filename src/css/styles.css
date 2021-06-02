@@ -213,13 +213,25 @@ header nav ul li a:hover {
 
 }
 
+.conteiner-painel div.info-noticias ul{
+    display: flex;
+    align-items: baseline;
+}
+
 .conteiner-painel ul li {
     display: inline-block;
+    text-align: center;
     width: 30%;
     height: 100px;
     border: 1px solid blue;
     padding: 5px;
     margin: 5px;
+}
+
+.conteiner-painel ul li p {
+    font-size: 30px;
+    font-weight: bold;
+
 }
 
 .conteiner-contato{

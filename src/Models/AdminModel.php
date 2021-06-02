@@ -25,12 +25,6 @@ class AdminModel{
         return $stmt->fetch(\PDO::FETCH_ASSOC);
     }
 
-    //Buscar noticias com base no intervalo definido
-    public function totalNoticias(String $intervalo){
-        $dataAtual = date($intervalo);
-        echo $dataAtual;
-    }
-
 
     public function salvarNoticia(){
         $titulo = isset($_POST['titulo']) ? $_POST['titulo'] : '';
@@ -41,5 +35,17 @@ class AdminModel{
         $conteudo = isset($_POST['conteudo']) ? $_POST['conteudo'] : '';
 
         echo $caminhoCapa;
+    }
+
+    public function totalNoticias(){
+        $db = Connection::connect();
+        $stmt = $db->prepare("SELECT COUNT(*) AS totalNoticias FROM noticia");
+        $stmt->execute();
+
+        if($stmt->rowCount() > 0){
+            return $stmt->fetch(\PDO::FETCH_ASSOC);
+        }
+
+        return false;
     }
 }

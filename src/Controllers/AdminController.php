@@ -50,8 +50,12 @@ class AdminController {
 
     public function home(){
 
+        $model = new AdminModel;
+        $totalNoticias = $model->totalNoticias();
+
         MainView::render('painel-home', array(
-            'titulo' => 'Painel - HOME'
+            'titulo' => 'Painel - HOME',
+            'totalNoticias' => $totalNoticias
         ));
     }
 
