@@ -2,10 +2,18 @@
 <?php include 'header.phtml' ?>
 
 <main class="conteiner-noticia"> 
-    <h2><?=$dados['noticia']->titulo?></h2>
+
+    <h2 class="titulo-noticia"><?=$dados['noticia']->titulo?></h2>
+    <p><?=$dados['noticia']->descricao?></p>
     <hr>
-    <span class="data-publicacao">Publicado em <?=$dados['noticia']->data_publicacao?></span>
-    <p><?=$dados['noticia']->texto_conteudo?></p>
+    <span class="data-publicacao">Publicado em <?=$dados['noticia']->data_formatada?>, por <?=$dados['noticia']->nome?></span>
+
+    <div>
+
+        <p><?=$dados['noticia']->texto_conteudo?></p>
+
+    </div>
+    
 </main>
 
 

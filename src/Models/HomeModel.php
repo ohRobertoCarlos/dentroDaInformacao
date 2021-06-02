@@ -16,7 +16,7 @@ class HomeModel {
 
     public function mostrarNoticia($slug){
         $db = Connection::connect();
-        $stmt = $db->prepare('SELECT * from noticia WHERE slug = :slug');
+        $stmt = $db->prepare('SELECT *,DATE_FORMAT(data_publicacao,"%d/%m/%Y") AS data_formatada,n.id_autor,u.nome FROM noticia AS n LEFT JOIN usuario AS u ON (n.id_autor = u.id) WHERE slug = :slug');
         $stmt->bindValue(':slug',$slug);
         $stmt->execute();
 

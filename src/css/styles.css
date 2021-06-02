@@ -41,7 +41,7 @@
     padding: 10px;
     display: block;
     width: 30%;
-    margin: 25px 25px 25px 0;
+    margin: 25Homepx 25px 25px 0;
     background-color: blue;
     color: white;
     border-radius: 15px;
@@ -318,7 +318,18 @@ a .fa-sign-out-alt{
     width: 80%;
     margin: 0 auto;
     padding: 10px;
-    border: 1px solid green;
+}
+
+.conteiner-noticia h2.titulo-noticia{
+}
+
+.conteiner-noticia span {
+    padding: 10px;
+    font-weight: bold;
+}
+
+.conteiner-noticia p {
+    margin-top: 40px;
 }
 
 .conteiner-adi-noticia {

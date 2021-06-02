@@ -49,6 +49,11 @@ class HomeController{
         $model = new HomeModel;
         $noticia = $model->mostrarNoticia($slug);
 
+        /*echo '<pre>';
+        print_r($noticia);
+        echo '</pre>';
+        exit();*/
+
         if($noticia != false){
             MainView::render('noticia',array(
                 'titulo' => $noticia->titulo,
