@@ -27,14 +27,49 @@ class AdminModel{
 
 
     public function salvarNoticia(){
+
+        $imagemDetails = $_FILES['imagem-capa'];
+
         $titulo = isset($_POST['titulo']) ? $_POST['titulo'] : '';
         $subtitulo = isset($_POST['subtitulo']) ? $_POST['subtitulo'] : '';
         $descricao = isset($_POST['descricao']) ? $_POST['descricao'] : '';
-        $nomeCapa = isset($_POST['imagem-capa']) ? $_POST['imagem-capa'] : '';
-        $caminhoCapa = 'resources/images/'.$nomeCapa;
         $conteudo = isset($_POST['conteudo']) ? $_POST['conteudo'] : '';
+        $autor = $_SESSION['id_usuario'];
+        $data_publicacao = date('Y-m-d');
+        $slug = $this->gerarSlug($titulo);
+        $idNoticia = uniqid();
 
-        echo $caminhoCapa;
+
+        if($this->validarImagem($imagemDetails) != true){
+            die('Imagem não válida');
+        }
+
+        $nomeImagem = $this->gerarNomeImagem($imagemDetails['name']);
+            
+        if($this->uploadImagem($imagemDetails,$nomeImagem) != true){
+                die('Erro ao cadastrar notícia!');
+        }
+
+        $thumbnail ='resources/images/'.$nomeImagem;
+
+        $db = Connection::connect();
+
+        $stmt = $db->prepare('INSERT INTO noticia(id, titulo,subtitulo, texto_conteudo, id_autor,thumbnail,descricao,slug) VALUES (:id,:titulo, :subtitulo,:texto_conteudo,:autor,:thumbnail,:descricao,:slug)');
+
+        $stmt->bindValue(':id',$idNoticia);
+        $stmt->bindValue(':titulo',$titulo);
+        $stmt->bindValue(':subtitulo',$subtitulo);
+        $stmt->bindValue(':texto_conteudo',$conteudo);
+        $stmt->bindValue(':autor',$autor);
+        $stmt->bindValue(':thumbnail',$thumbnail);
+        $stmt->bindValue(':descricao',$descricao);
+        $stmt->bindValue(':slug',$slug);
+
+        if($stmt->execute()){
+            return true;
+        }
+
+        return false;
     }
 
     public function totalNoticias(){
@@ -47,5 +82,57 @@ class AdminModel{
         }
 
         return false;
+    }
+
+    public function uploadImagem($imagem,$nomeImagem){
+        if(move_uploaded_file($imagem['tmp_name'],PATH_ROOT.'resources/images/'.$nomeImagem)){
+
+            return true;
+        }
+
+            return false;
+    }
+
+    public function validarImagem($imagem){
+        $tamanhoImagem = $imagem['size']/1024;
+
+        if($imagem['type'] == 'image/jpg' || $imagem['type'] == 'image/jpeg' || $imagem['type'] == 'image/png'){
+            if($tamanhoImagem < 400){
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function gerarNomeImagem($nomeImagem){
+        $imagem = explode('.',$nomeImagem);
+        $nome = 'image';
+
+        for($i=0;$i<10;$i++){
+            $randomico = rand(1,20);
+            $randomico = utf8_encode(intval($randomico));
+            $nome .= $randomico;
+        }
+
+        $nomeFormatado = $nome.'.'.$imagem[1];
+
+
+        return $nomeFormatado;
+    }
+
+    public function gerarSlug($titulo){
+        $slug = explode(' ',$titulo);
+
+        $slugFormatado = implode('-',$slug);
+
+        $slugFormatado = preg_replace('/(á|ã|â|à)/', 'a',$slugFormatado);
+        $slugFormatado = preg_replace('/(é|è|ẽ|ê)/', 'e',$slugFormatado);
+        $slugFormatado = preg_replace('/(í|ì|ĩ|î)/', 'i',$slugFormatado);
+        $slugFormatado = preg_replace('/(ó|ò|õ|ô)/', 'o',$slugFormatado);
+        $slugFormatado = preg_replace('/(ú|ù|ũ|û)/', 'u',$slugFormatado);
+
+
+        return $slugFormatado;
     }
 }

@@ -5,7 +5,7 @@
 
     <h2>Cadastrar Notícia</h2>
 
-    <form method="post" action="<?=PATH_INDEX?>salvar-noticia">
+    <form method="post" action="<?=PATH_INDEX?>salvar-noticia" enctype="multipart/form-data">
 
         <label>Título da Notícia:</label>
         <input name="titulo" type="text" placeholder="Título" required="required"/>
@@ -17,12 +17,12 @@
         <input name="descricao" type="text" placeholder="descrição" required="required"/>
 
         <label>Capa da Notícia:</label>
-        <input name="imagem-capa" type="file" placeholder="Adicione uma capa..."/>
+        <input name="imagem-capa" type="file" placeholder="Adicione uma capa..." required="required"/>
 
         <label for="editorNoticia">Conteúdo da Notícia:</label>
         <textarea class="mt-4" name="conteudo" id="editorNoticia"></textarea>
 
-        <input class="btn btn-success" type="submit" value="Cadastrar :)"/>
+        <input class="btn btn-success" name="acao" type="submit" value="Cadastrar :)"/>
     </form>
 
 </main>

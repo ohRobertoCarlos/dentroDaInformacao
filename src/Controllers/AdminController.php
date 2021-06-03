@@ -9,8 +9,9 @@ use App\Models\AdminModel;
 class AdminController {
 
     public function index(){
+
         session_start();
-        if(isset($_SESSION['email_login'])){
+        if(isset($_SESSION['email'])){
             $caminho = PATH_INDEX. 'painel';
             header('Location: '.$caminho);
             die();
@@ -22,6 +23,14 @@ class AdminController {
     }
 
     public static function verificaLogin(){
+        session_start();
+        if(!isset($_SESSION['email'])){
+            $caminho = PATH_INDEX. 'admin-login';
+            header('Location: '.$caminho);
+            die();
+        }
+
+        return true;
     }
 
 
@@ -30,7 +39,8 @@ class AdminController {
         $existeUsuario = $model->consultarUsuario();
         if($existeUsuario != false){
             session_start();
-            $_SESSION['email_login'] = $existeUsuario['email_login'];
+            $_SESSION['email'] = $existeUsuario['email_login'];
+            $_SESSION['id_usuario'] = $existeUsuario['id_usuario'];
             $caminho = PATH_INDEX. 'admin-login';
             header('location: '. $caminho);
             die();
@@ -43,12 +53,18 @@ class AdminController {
 
     public function sairSessao(){
         session_start();
-        unset($_SESSION['email_login']);
+        unset($_SESSION['email']);
         header('location: admin-login');
         die();
     }
 
     public function home(){
+
+        session_start();
+        if(!isset($_SESSION['email'])){
+            $caminho = PATH_INDEX. 'admin-login';
+            header('Location: '.$caminho);
+        }
 
         $model = new AdminModel;
         $totalNoticias = $model->totalNoticias();
@@ -60,6 +76,12 @@ class AdminController {
     }
 
     public function adicionarNoticia(){
+        session_start();
+        if(!isset($_SESSION['email'])){
+            $caminho = PATH_INDEX. 'admin-login';
+            header('Location: '.$caminho);
+            die();
+        }
         
         MainView::render('cadastrar-noticia', array(
             'titulo' => 'Adicionar Notícia'
@@ -67,7 +89,27 @@ class AdminController {
     }
 
     public function salvarNoticia(){
+        session_start();
+        if(!isset($_SESSION['email'])){
+            $caminho = PATH_INDEX. 'admin-login';
+            header('Location: '.$caminho);
+            die();
+        }
+
+        if(!isset($_POST['acao'])){
+            die('opção inválida');
+        }
+
+
         $model = new AdminModel;
-        $model->salvarNoticia();
+        
+        if($model->salvarNoticia()){
+            $caminho = PATH_INDEX. 'home';
+            header('Location: '.$caminho);
+            die();
+        }
+
+        die('não foi possível salvar a notícia, tente novamente mais tarde!');
+
     }
 }

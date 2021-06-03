@@ -8,6 +8,7 @@ const USER = 'root';
 const PASSWORD = '';
 
 const PATH_INDEX = 'http://localhost/dentroDaInformacao/';
+const PATH_ROOT = __DIR__.'/';
 
 require 'vendor/autoload.php';
 
