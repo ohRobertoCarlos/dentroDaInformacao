@@ -68,10 +68,12 @@ class AdminController {
 
         $model = new AdminModel;
         $totalNoticias = $model->totalNoticias();
+        $noticiasHoje = $model->noticiasHoje();
 
         MainView::render('painel-home', array(
             'titulo' => 'Painel - HOME',
-            'totalNoticias' => $totalNoticias
+            'totalNoticias' => $totalNoticias,
+            'noticiasHoje' => $noticiasHoje
         ));
     }
 

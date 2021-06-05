@@ -3,12 +3,12 @@
 
 <main class="conteiner-noticia"> 
 
-    <h2 class="titulo-noticia"><?=$dados['noticia']->titulo?></h2>
+    <h1 class="titulo-noticia"><?=$dados['noticia']->titulo?></h1>
     <p><?=$dados['noticia']->descricao?></p>
     <hr>
     <span class="data-publicacao">Publicado em <?=$dados['noticia']->data_formatada?>, por <?=$dados['noticia']->nome?></span>
 
-    <div>
+    <div class="conteudo-noticia">
 
         <p><?=$dados['noticia']->texto_conteudo?></p>
 
@@ -16,6 +16,15 @@
     
 </main>
 
+<hr>
 
+<h3>Avalie esta notícia!<h3>
 
-<?php include 'footer.phtml' ?>
+<footer class="footer-noticia">
+<span>Todos Direitos Reservados - 2021</span>
+</footer>
+
+<script src="src/js/all.min.js"></script>
+<script src="src/js/scripts.js"></script>
+<script src="https://cdn.tiny.cloud/1/60xobe09a2ftk9t3vs8hz0h0ltzbqatf82xwi6g3gvdthm8n/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="src/js/tinymce.js"></script>

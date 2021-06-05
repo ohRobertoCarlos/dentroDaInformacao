@@ -94,7 +94,7 @@ class AdminModel{
     }
 
     public function validarImagem($imagem){
-        $tamanhoImagem = $imagem['size']/1024;
+        $tamanhoImagem = round($imagem['size']/1024);
 
         if($imagem['type'] == 'image/jpg' || $imagem['type'] == 'image/jpeg' || $imagem['type'] == 'image/png'){
             if($tamanhoImagem < 400){
@@ -134,5 +134,23 @@ class AdminModel{
 
 
         return $slugFormatado;
+    }
+
+
+    public function noticiasHoje(){
+        $hoje = date('Y-m-d');
+
+       
+        $db = Connection::connect();
+        $stmt = $db->prepare('SELECT COUNT(*) as noticiasHoje FROM noticia WHERE data_publicacao = :hoje');
+        $stmt->bindValue(':hoje',$hoje);
+
+        $stmt->execute();
+
+        if($stmt->rowCount() == 0){
+            return 0;
+        }
+
+        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 }

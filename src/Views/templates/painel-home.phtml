@@ -12,7 +12,10 @@
             <li><h5>Total de Noticias</h5>
                 <p><?=$dados['totalNoticias']['totalNoticias']?></p>
             </li>
-            <li><h5>Noticias de hoje</h5></li>
+            <li>
+                <h5>Noticias de hoje</h5>
+                <p><?=$dados['noticiasHoje'][0]['noticiasHoje']?></p>
+            </li>
             <li><h5>Noticias dessa semana</h5></li>
         </ul>
     </div>
@@ -21,9 +24,8 @@
     <section>
         <a class="btn btn-success" href="<?=PATH_INDEX?>adicionar-noticia">Incluir noticia</a>
 
-        <a class="btn btn-primary" href="<?=PATH_INDEX?>editar-noticia">Editar noticia</a>
+        <a class="btn btn-primary" href="<?=PATH_INDEX?>gerenciar-noticias">Gerenciar Notícias</a>
 
-        <a class="btn btn-danger" href="<?=PATH_INDEX?>excluir-noticia">Excluir noticia</a>
         <div class="form-painel">
     </section>
     
