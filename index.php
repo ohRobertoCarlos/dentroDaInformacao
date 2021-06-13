@@ -1,6 +1,6 @@
 <?php
 
-require 'config.php';
+require 'vendor/autoload.php';
 
 $autoload = function($class){
 	if(file_exists($class. '.php')){
@@ -11,3 +11,5 @@ $autoload = function($class){
 };
 
 spl_autoload_register($autoload);
+
+require 'config.php';

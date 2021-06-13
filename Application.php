@@ -33,7 +33,7 @@ class Application{
 					$class = 'App\\Controllers\\'.$control;
 					$newController = new $class;
 					$newController->$func();
-				}catch(Exception $e){
+				}catch(Exception $e){		
 					echo "Erro!";
 				}
 			}else{

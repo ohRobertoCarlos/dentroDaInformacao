@@ -7,6 +7,7 @@ use App\Models\HomeModel;
 class HomeController{ 
 
     public function index(){
+
         $model = new HomeModel;
         $noticias = $model->getNoticias();
 
