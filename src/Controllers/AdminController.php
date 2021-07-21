@@ -8,6 +8,12 @@ use App\Models\AdminModel;
 
 class AdminController {
 
+    private $model;
+
+    public function __construct(){
+        $this->model = new AdminModel;
+    }
+
     public function index(){
 
         session_start();
@@ -35,8 +41,7 @@ class AdminController {
 
 
     public function consultarLogin(){
-        $model = new AdminModel;
-        $existeUsuario = $model->consultarUsuario();
+        $existeUsuario = $this->model->consultarUsuario();
         if($existeUsuario != false){
             session_start();
             $_SESSION['email'] = $existeUsuario['email_login'];
@@ -64,11 +69,11 @@ class AdminController {
         if(!isset($_SESSION['email'])){
             $caminho = PATH_INDEX. 'admin-login';
             header('Location: '.$caminho);
+            die();
         }
 
-        $model = new AdminModel;
-        $totalNoticias = $model->totalNoticias();
-        $noticiasHoje = $model->noticiasHoje();
+        $totalNoticias = $this->model->totalNoticias();
+        $noticiasHoje = $this->model->noticiasHoje();
 
         MainView::render('painel-home', array(
             'titulo' => 'Painel - HOME',
@@ -103,9 +108,8 @@ class AdminController {
         }
 
 
-        $model = new AdminModel;
         
-        if($model->salvarNoticia()){
+        if($this->model->salvarNoticia()){
             $caminho = PATH_INDEX. 'home';
             header('Location: '.$caminho);
             die();
@@ -113,5 +117,71 @@ class AdminController {
 
         die('não foi possível salvar a notícia, tente novamente mais tarde!');
 
+    }
+
+    public function gerenciarNoticias(){
+        session_start();
+        if(!isset($_SESSION['email'])){
+            $caminho = PATH_INDEX. 'admin-login';
+            header('Location: '.$caminho);
+            die();
+        }
+
+        $noticias = $this->model->gerenciarNoticias();
+
+        MainView::render('gerenciar-noticias',array(
+            'titulo' => 'Gerenciar notícias',
+            'noticias' => $noticias
+        ));
+    }
+
+    public function deletarNoticia(){
+        session_start();
+        if(!isset($_SESSION['email'])){
+            $caminho = PATH_INDEX. 'admin-login';
+            header('Location: '.$caminho);
+            die();
+        }
+
+        $slug = isset($_GET['slug']) ? $_GET['slug'] : '';
+
+        if($this->model->deletarNoticia($slug)){
+            $caminho = PATH_INDEX. 'gerenciar-noticias';
+            header('Location: '. $caminho);
+            die();
+        }
+
+        
+
+        return die('não foi possível deletar noticia!');
+    }
+
+    public function editarNoticia(){
+        session_start();
+        if(!isset($_SESSION['email'])){
+            $caminho = PATH_INDEX. 'admin-login';
+            header('Location: '.$caminho);
+            die();
+        }
+
+        $slug = isset($_GET['slug']) ? $_GET['slug'] : '';
+        $noticia = $this->model->getNoticia($slug);
+
+        MainView::render('editar-noticia', array(
+            'titulo' => 'Editar Notícia',
+            'noticia' => $noticia
+        ));
+    }
+
+    public function atualizarNoticia(){
+        $id = isset($_GET['id']) ? $_GET['id'] : '';
+
+        if($this->model->atualizarNoticia($id)){
+            $caminho = PATH_INDEX. 'gerenciar-noticias';
+            header('Location: '. $caminho);
+            die();
+        }
+
+        return false;
     }
 }

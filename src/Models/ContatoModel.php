@@ -26,12 +26,14 @@ class ContatoModel {
         if(strlen($telefone) != 11){
             return false;
         }
-
+        //Se existir o email digitado no banco retorna 'false'
         if($this->existeEmail() != true){
 
+        //Se já existir o telefone digitatdo no banco retorna 'false'
         if($this->existeTelefone() == true){
                 return false;
             }
+
             $db = Connection::connect();
 
             $stmt = $db->prepare('INSERT INTO usuario(id,nome,telefone,email) VALUES (:id,:nome,:telefone,:email)');

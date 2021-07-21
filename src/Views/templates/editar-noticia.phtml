@@ -1,0 +1,39 @@
+<?php include 'header.phtml'?>
+
+<main class="conteiner-adi-noticia">
+
+    <h2>Editar Notícia</h2>
+
+    <form method="post" action="<?=PATH_INDEX?>atualizar-noticia?id=<?=$dados['noticia']->id?>" enctype="multipart/form-data">
+
+        <label>Título da Notícia:</label>
+        <input value="<?=$dados['noticia']->titulo?>" name="titulo" type="text" placeholder="Título" required="required"/>
+
+        <label>Sub-título da Notícia:</label>
+        <input value="<?=$dados['noticia']->subtitulo?>"  name="subtitulo" type="text" placeholder="Sub-Título" required="required"/>
+
+        <label>Descrição da Notícia:</label>
+        <input value="<?=$dados['noticia']->descricao?>"  name="descricao" type="text" placeholder="descrição" required="required"/>
+
+        <label>Capa da Notícia:</label>
+        <input name="imagem-capa" type="file" placeholder="Adicione uma capa..."/>
+
+        <label for="editorNoticia">Conteúdo da Notícia:</label>
+        <textarea class="mt-4" name="conteudo" id="editorNoticia">
+          <?=$dados['noticia']->texto_conteudo?>
+        </textarea>
+
+        <input class="btn btn-success" name="acao" type="submit" value="Atualizar :)"/>
+    </form>
+
+</main>
+
+
+<footer class="footer-adi-noticia">
+<span>Todos Direitos Reservados - 2021</span>
+</footer>
+
+<script src="src/js/all.min.js"></script>
+<script src="src/js/scripts.js"></script>
+<script src="https://cdn.tiny.cloud/1/60xobe09a2ftk9t3vs8hz0h0ltzbqatf82xwi6g3gvdthm8n/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+<script src="src/js/tinymce.js"></script>

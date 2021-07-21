@@ -15,6 +15,10 @@ Application::get('enviar-contato','contato','enviarContato');
 Application::get('adicionar-noticia','admin','adicionarNoticia');
 Application::get('todas-noticias','home','todasNoticias');
 Application::get('salvar-noticia','admin','salvarNoticia');
+Application::get('gerenciar-noticias','admin','gerenciarNoticias');
+Application::get('delete','admin','deletarNoticia');
+Application::get('edit','admin','editarNoticia');
+Application::get('atualizar-noticia','admin','atualizarNoticia');
 
 
 ?>

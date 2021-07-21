@@ -1,0 +1,33 @@
+<?php include 'header.phtml'?>
+
+<main>
+  <div class="container-gereciar-noticia">
+    <h2>Gerenciar notícias</h2>
+
+  <?php foreach($dados['noticias'] as $dado) {?>
+    <article>
+            <div class="item-img">
+                <img src="<?=$dado->thumbnail?>" alt="Imagem-capa">
+            </div>
+
+            <div class="conteudo-texto-item">
+                <a href="<?=PATH_INDEX?>noticia?slug=<?=$dado->slug?>"><h3><?=$dado->titulo?></h3></a>
+                <p><?=$dado->descricao?></p>
+            </div>
+            <div class="icons-gerenciar">
+                  <a href="<?=PATH_INDEX?>delete?slug=<?=$dado->slug?>" title="apagar">
+                    <i class="fas fa-trash"></i>
+                  </a>
+                  <a href="<?=PATH_INDEX?>edit?slug=<?=$dado->slug?>" title="editar">
+                    <i class="fas fa-pen"></i>
+                  </a>
+                  
+            </div>
+        </article>
+
+      <?php } ?>
+    
+  </div>
+</main>
+
+<?php include 'footer.phtml' ?>

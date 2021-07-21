@@ -5,12 +5,20 @@
   padding: 0;
   box-sizing: border-box;
   font-family: Lexend, "sans-serif";
+  position: relative;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .conteiner-login {
-  margin: 0 auto;
-  display: flex;
   width: 80%;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: flex;
   justify-content: center;
   align-items: baseline;
   margin-top: 50px;
@@ -106,15 +114,15 @@ article .conteudo-texto-item h3 {
 }
 
 footer {
-  position: fixed;
+  position: relative;
   bottom: 0;
   width: 100%;
   font-size: 20px;
   display: block;
-  margin-top: 10px;
+  margin-top: auto;
   padding: 15px;
   justify-content: center;
-  align-items: flex-end;
+  align-self: flex-end;
   background-color: blue;
   color: white;
   text-align: center;
@@ -230,9 +238,19 @@ header nav ul li a:hover {
   font-size: 30px;
   font-weight: bold;
 }
+.topo-pagina {
+  display: flex;
+  justify-content: space-between;
+}
+
+.topo-pagina a {
+  text-decoration: none;
+  color: black;
+}
 
 .conteiner-contato {
   width: 70%;
+  height: calc(100vh - 140px);
   margin: 0 auto;
   padding: 20px;
   display: flex;
@@ -332,6 +350,27 @@ main.conteiner-noticia p > img {
   justify-content: center;
 }
 
+main.conteiner-noticia p figure > img {
+  width: 60%;
+  height: 60%;
+  margin: 40px 20%;
+  justify-content: center;
+}
+
+main.conteiner-noticia figure > img {
+  width: 60%;
+  height: 60%;
+  margin: 40px 20%;
+  justify-content: center;
+}
+main.conteiner-noticia figure figcaption {
+  top: 0;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-weight: bold;
+}
+
 .conteiner-noticia h2.titulo-noticia {
 }
 
@@ -373,10 +412,53 @@ main.conteiner-noticia p > img {
 
 .footer-adi-noticia {
   position: relative;
+  margin-top: auto;
 }
 
-@media screen and (max-width: 910px) {
-  footer {
-    position: relative;
-  }
+.container-gereciar-noticia {
+  max-width: 960px;
+  margin: 15px auto;
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  background-color: #e7e3e3;
+}
+
+.container-gereciar-noticia article {
+  display: flex;
+  width: 90%;
+  height: 100px;
+  border-radius: 10px;
+  background-color: white;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  text-overflow: ellipsis;
+  padding-right: 20px;
+}
+
+.container-gereciar-noticia h2 {
+  margin: 10px;
+}
+
+.container-gereciar-noticia div a {
+  font-size: 20px;
+  margin: 5px;
+}
+.container-gereciar-noticia div a .fa-trash {
+  color: red;
+}
+
+.container-gereciar-noticia div a:hover {
+  cursor: pointer;
+}
+
+.icons-gerenciar {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-around;
 }
