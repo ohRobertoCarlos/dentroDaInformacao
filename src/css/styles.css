@@ -1,5 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap");
 
+:root {
+  --header-position: calc(100vh - 130px);
+}
 * {
   margin: 0;
   padding: 0;
@@ -16,8 +19,8 @@ body {
 
 .conteiner-login {
   width: 80%;
+  min-height: var(--header-position);
   margin: 0 auto;
-  min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: baseline;
@@ -167,6 +170,7 @@ header nav ul li a:hover {
 
 .conteiner-home {
   width: 100%;
+  min-height: var(--header-position);
   display: flex;
   justify-content: space-around;
 }
@@ -201,6 +205,7 @@ header nav ul li a:hover {
 
 .conteiner-painel {
   width: 70%;
+  min-height: var(--header-position);
   margin: 0 auto;
   padding: 20px;
   text-align: justify;
@@ -250,7 +255,7 @@ header nav ul li a:hover {
 
 .conteiner-contato {
   width: 70%;
-  height: calc(100vh - 140px);
+  height: var(--header-position);
   margin: 0 auto;
   padding: 20px;
   display: flex;
@@ -416,6 +421,7 @@ main.conteiner-noticia figure figcaption {
 }
 
 .container-gereciar-noticia {
+  background-color: #e7e3e3;
   max-width: 960px;
   margin: 15px auto;
   min-height: 100vh;
@@ -423,8 +429,6 @@ main.conteiner-noticia figure figcaption {
   display: flex;
   flex-direction: column;
   gap: 15px;
-
-  background-color: #e7e3e3;
 }
 
 .container-gereciar-noticia article {
@@ -461,4 +465,66 @@ main.conteiner-noticia figure figcaption {
   flex-direction: column;
   align-items: baseline;
   justify-content: space-around;
+}
+
+.container-sobre {
+  width: 100%;
+  min-height: var(--header-position);
+}
+
+.container-sobre {
+  width: 100%;
+  height: 100%;
+  background-image: url("./../../resources/images/imagem.jpg");
+  background-size: cover;
+}
+
+#oquesomos {
+  width: 60%;
+  margin: 0px auto;
+  border-radius: 6px;
+}
+legend {
+  text-align: center;
+  font-size: 19px;
+  font-style: normal;
+  color: #ffff;
+}
+.texto-sobre {
+  font-size: 17;
+  color: #ffff;
+  font-style: initial;
+  font-weight: 600;
+}
+
+.container-todas-noticias {
+  background-color: #e7e3e3;
+  width: 70%;
+  margin: 15px auto;
+  padding: 15px;
+  min-height: var(--header-position);
+}
+
+.container-todas-noticias article {
+  display: flex;
+  width: 90%;
+  height: 100px;
+  border-radius: 10px;
+  background-color: white;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  margin-left: 15px;
+  text-overflow: ellipsis;
+  padding-right: 20px;
+}
+
+.container-todas-noticias div.conteudo-texto-item {
+  display: flex;
+  align-items: center;
+}
+
+@media screen and (max-width: 760px) {
+  #oquesomos {
+    width: 70%;
+  }
 }

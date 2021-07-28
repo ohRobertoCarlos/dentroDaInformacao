@@ -1,23 +1,22 @@
 {
-    "name": "projeto/blog",
-    "description": "Blog de notícias",
-    "authors": [
-        {
-            "name": "Roberto Carlos",
-            "email": "robertocarlosdeveloper@gmail.com"
-        },
-        {
-            "name": "Adnan",
-            "email": "adnanjosealixandre@gmail.com"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
+  "name": "projeto/blog",
+  "description": "Blog de notícias",
+  "authors": [
+    {
+      "name": "Roberto Carlos",
+      "email": "robertocarlosdeveloper@gmail.com"
     },
-    "require": {
-        "phpmailer/phpmailer": "^6.4",
-        "vlucas/phpdotenv": "^5.3"
+    {
+      "name": "Adnan",
+      "email": "adnanjosealixandre@gmail.com"
     }
+  ],
+  "autoload": {
+    "psr-4": {
+      "App\\": "src/"
+    }
+  },
+  "require": {
+    "phpmailer/phpmailer": "6.5.0"
+  }
 }

@@ -1,0 +1,22 @@
+
+<?php include 'header.phtml' ?>
+<div class="container-todas-noticias">
+
+  <h2>Todas Notícias</h2>
+
+    <?php foreach($dados['noticias'] as $dado) {?>
+      <article>
+            <div class="item-img">
+                <img src="<?=$dado->thumbnail?>" alt="Imagem-capa">
+            </div>
+
+            <div class="conteudo-texto-item">
+                <a href="<?=PATH_INDEX?>noticia?slug=<?=$dado->slug?>"><h3><?=$dado->titulo?></h3></a>
+            </div>
+        </article>
+
+      <?php } ?>
+
+</div>
+
+<?php include 'footer.phtml' ?>

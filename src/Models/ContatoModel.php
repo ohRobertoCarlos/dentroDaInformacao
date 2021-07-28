@@ -10,9 +10,15 @@ use PHPMailer\PHPMailer\Exception;
 
 class ContatoModel {
 
+    private $db;
+
     private $emailDestino;
     private $mensagem;
     private $assunto;
+
+    public function __construct(){
+        $this->db = Connection::connect();
+    }
 
 
     public function salvarUsuario(){
@@ -34,9 +40,7 @@ class ContatoModel {
                 return false;
             }
 
-            $db = Connection::connect();
-
-            $stmt = $db->prepare('INSERT INTO usuario(id,nome,telefone,email) VALUES (:id,:nome,:telefone,:email)');
+            $stmt = $this->db->prepare('INSERT INTO usuario(id,nome,telefone,email) VALUES (:id,:nome,:telefone,:email)');
             $stmt->bindValue(':id',$id_usuario);
             $stmt->bindValue(':nome',$nome);
             $stmt->bindValue(':telefone',$telefone);
@@ -65,8 +69,7 @@ class ContatoModel {
 
         $email = isset($_POST['email']) ? $_POST['email'] : '';
 
-        $db = Connection::connect();
-        $stmt = $db->prepare("SELECT * FROM usuario WHERE email = :email");
+        $stmt = $this->db->prepare("SELECT * FROM usuario WHERE email = :email");
         $stmt->bindValue(':email',$email);
         $stmt->execute();
 
@@ -84,8 +87,7 @@ class ContatoModel {
 
         $telefone = isset($_POST['telefone']) ? $_POST['telefone'] : '';
 
-        $db = Connection::connect();
-        $stmt = $db->prepare("SELECT * FROM usuario WHERE telefone = :telefone");
+        $stmt = $this->db->prepare("SELECT * FROM usuario WHERE telefone = :telefone");
         $stmt->bindValue(':telefone',$telefone);
         $stmt->execute();
 

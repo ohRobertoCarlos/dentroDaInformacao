@@ -6,10 +6,14 @@ use App\Models\HomeModel;
 
 class HomeController{ 
 
-    public function index(){
+    private $model;
 
-        $model = new HomeModel;
-        $noticias = $model->getNoticias();
+    public function __construct(){
+        $this->model = new HomeModel;
+    }
+
+    public function index(){
+        $noticias = $this->model->getNoticias();
 
         
         MainView::render('home',array(
@@ -47,8 +51,7 @@ class HomeController{
 
     public function mostrarNoticia(){
         $slug = isset($_GET['slug']) ? $_GET['slug'] : '';
-        $model = new HomeModel;
-        $noticia = $model->mostrarNoticia($slug);
+        $noticia = $this->model->mostrarNoticia($slug);
 
         /*echo '<pre>';
         print_r($noticia);
@@ -70,11 +73,12 @@ class HomeController{
 
     public function todasNoticias(){
         $model = new HomeModel;
-        $noticias = $model->todasNoticias();
+        $noticias = $this->model->todasNoticias();
 
-        echo '<pre>';
-        print_r($noticias);
-        echo '</pre>';
+        MainView::render('todas-noticias', array(
+            'titulo' => 'Todas notícias',
+            'noticias' => $noticias
+        ));
     }
 
 }

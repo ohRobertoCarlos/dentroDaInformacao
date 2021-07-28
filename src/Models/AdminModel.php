@@ -8,11 +8,16 @@ class AdminModel{
 
     private $db;
     public $nomeImagem;
+
     public function __construct(){
         $this->db = Connection::connect();
     }
 
-    //Consultar se usuário existe
+    /**
+     * Verifica a existência de um usuário
+     *
+     * @return boolean|array
+     */
     public function consultarUsuario(){
 
         $senha = isset($_POST['senha']) ? $_POST['senha'] : '' ;
@@ -32,6 +37,11 @@ class AdminModel{
     }
 
 
+    /**
+     * Centraliza a lógica de salvar a noticia
+     *
+     * @return boolean
+     */
     public function salvarNoticia(){
 
         $imagemDetails = $_FILES['imagem-capa'];
@@ -58,9 +68,7 @@ class AdminModel{
 
         $thumbnail ='resources/images/'.$nomeImagem;
 
-        $db = Connection::connect();
-
-        $stmt = $db->prepare('INSERT INTO noticia(id, titulo,subtitulo, texto_conteudo, id_autor,thumbnail,descricao,slug) VALUES (:id,:titulo, :subtitulo,:texto_conteudo,:autor,:thumbnail,:descricao,:slug)');
+        $stmt = $this->db->prepare('INSERT INTO noticia(id, titulo,subtitulo, texto_conteudo, id_autor,thumbnail,descricao,slug) VALUES (:id,:titulo, :subtitulo,:texto_conteudo,:autor,:thumbnail,:descricao,:slug)');
 
         $stmt->bindValue(':id',$idNoticia);
         $stmt->bindValue(':titulo',$titulo);
@@ -78,9 +86,13 @@ class AdminModel{
         return false;
     }
 
+    /**
+     * pega o total de noticias cadastradas
+     *
+     * @return boolean|array
+     */
     public function totalNoticias(){
-        $db = Connection::connect();
-        $stmt = $db->prepare("SELECT COUNT(*) AS totalNoticias FROM noticia");
+        $stmt = $this->db->prepare("SELECT COUNT(*) AS totalNoticias FROM noticia");
         $stmt->execute();
 
         if($stmt->rowCount() > 0){
@@ -90,15 +102,27 @@ class AdminModel{
         return false;
     }
 
+    /**
+     * Faz o upload da imagem
+     *
+     * @param array $imagem
+     * @param string $nomeImagem
+     * @return boolean
+     */
     public function uploadImagem($imagem,$nomeImagem){
         if(move_uploaded_file($imagem['tmp_name'],PATH_ROOT.'resources/images/'.$nomeImagem)){
-
             return true;
         }
 
-            return false;
+        return false;
     }
 
+    /**
+     * Valida a imagem em si
+     *
+     * @param array $imagem
+     * @return boolean
+     */
     public function validarImagem($imagem){
         $tamanhoImagem = round($imagem['size']/1024);
 
@@ -111,6 +135,12 @@ class AdminModel{
         return false;
     }
 
+    /**
+     * Gera o nome da imagem
+     *
+     * @param string $nomeImagem
+     * @return string
+     */
     public function gerarNomeImagem($nomeImagem){
         $imagem = explode('.',$nomeImagem);
         $nome = 'image';
@@ -127,6 +157,13 @@ class AdminModel{
         return $nomeFormatado;
     }
 
+
+    /**
+     * Gera o slug da noticia
+     *
+     * @param string $titulo
+     * @return string
+     */
     public function gerarSlug($titulo){
         $slug = explode(' ',$titulo);
 
@@ -143,35 +180,48 @@ class AdminModel{
     }
 
 
+    /**
+     * Consulta o número de noticias publicadas hoje
+     *
+     * @return int|array
+     */
     public function noticiasHoje(){
         $hoje = date('Y-m-d');
 
-       
-        $db = Connection::connect();
-        $stmt = $db->prepare('SELECT COUNT(*) as noticiasHoje FROM noticia WHERE data_publicacao = :hoje');
+        $stmt = $this->db->prepare('SELECT COUNT(*) as noticiasHoje FROM noticia WHERE data_publicacao = :hoje');
         $stmt->bindValue(':hoje',$hoje);
 
         $stmt->execute();
 
         if($stmt->rowCount() == 0){
-            return 0;
+            return intval(0);
         }
 
         return $stmt->fetchAll(\PDO::FETCH_ASSOC);
     }
 
+    /**
+     * Recupera as noticias para serem gerenciadas
+     *
+     * @return array
+     */
     public function gerenciarNoticias(){
-         //estabelço conexão com banco
-        $db = Connection::connect();
-
         //Query para buscar todas noticias
-        $stmt = $db->prepare('SELECT * FROM noticia');
+        $stmt = $this->db->prepare('SELECT * FROM noticia');
         $stmt->execute();
 
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
+
+    /**
+     * Deleta uma noticia
+     *
+     * @param string $slug
+     * @return boolean
+     */
     public function deletarNoticia($slug){
+        //Deletando notícia
         $sql = 'DELETE FROM noticia WHERE slug = :slug';
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':slug', $slug);
@@ -182,11 +232,12 @@ class AdminModel{
         return false;
     }
 
-    public function editarNoticia($slug){
-        $sql = 'SELECT * FROM noticias WHERE slug = :slug';
-        $this->db->prepare($sql);
-    }
-
+    /**
+     * Pega uma noticia em específico
+     *
+     * @param string $slug
+     * @return array|string
+     */
     public function getNoticia($slug){
         $sql = 'SELECT * FROM noticia WHERE slug = :slug';
         $stmt = $this->db->prepare($sql);
@@ -200,6 +251,13 @@ class AdminModel{
         return 'não encontrada';
     }
 
+
+    /**
+     * Atualiza uma noticia
+     *
+     * @param string $id
+     * @return boolean
+     */
     public function atualizarNoticia($id){
         session_start();
 
@@ -228,13 +286,11 @@ class AdminModel{
 
         $thumbnail ='resources/images/'.$this->nomeImagem;
 
-        $db = Connection::connect();
-
         if($_FILES['imagem-capa']['size'] > 0){
-            $stmt = $db->prepare('UPDATE noticia set id = :id, titulo = :titulo,subtitulo = :subtitulo, texto_conteudo = :texto_conteudo, id_autor = :autor,thumbnail = :thumbnail,descricao = :descricao,slug = :slug WHERE id = :idAntigo');
+            $stmt = $this->db->prepare('UPDATE noticia set id = :id, titulo = :titulo,subtitulo = :subtitulo, texto_conteudo = :texto_conteudo, id_autor = :autor,thumbnail = :thumbnail,descricao = :descricao,slug = :slug WHERE id = :idAntigo');
             $stmt->bindValue(':thumbnail',$thumbnail);
         }else{
-            $stmt = $db->prepare('UPDATE noticia set id = :id, titulo = :titulo,subtitulo = :subtitulo, texto_conteudo = :texto_conteudo, id_autor = :autor,descricao = :descricao,slug = :slug  WHERE id = :idAntigo');
+            $stmt = $this->db->prepare('UPDATE noticia set id = :id, titulo = :titulo,subtitulo = :subtitulo, texto_conteudo = :texto_conteudo, id_autor = :autor,descricao = :descricao,slug = :slug  WHERE id = :idAntigo');
         }
 
 
@@ -250,8 +306,6 @@ class AdminModel{
         if($stmt->execute()){
             return true;
         }
-
-        echo 'algo deu ruim';
 
         return false;
     }
