@@ -4,6 +4,7 @@
 
   <h2>Todas Notícias</h2>
 
+
     <?php foreach($dados['noticias'] as $dado) {?>
       <article>
             <div class="item-img">
@@ -16,6 +17,14 @@
         </article>
 
       <?php } ?>
+
+      <div id="pagination" pageAtual="<?=$dados['pageAtual']?>">
+        <?php for($i=1 ; $i <= $dados['pages']; $i++) { ?>
+
+          <a id="page_<?=$i?>" href="<?=PATH_INDEX?>todas-noticias?page=<?=$i?>"><?=$i?></a>
+
+        <?php } ?>
+      </div>
 
 </div>
 

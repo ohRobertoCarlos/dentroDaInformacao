@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Connection;
+use App\Database\Connection;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;

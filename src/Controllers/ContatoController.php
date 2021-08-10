@@ -7,6 +7,12 @@ use App\Models\ContatoModel;
 
 class ContatoController {
 
+    private $model;
+
+    public function __construct(){
+        $this->model = new ContatoModel;
+    }
+
     public function index(){
         
         MainView::render('contato', array(
@@ -17,9 +23,7 @@ class ContatoController {
 
 
     public function enviarContato(){
-        $model = new ContatoModel;
-
-        if($model->salvarUsuario()){
+        if($this->model->salvarUsuario()){
             $caminho = PATH_INDEX.'contato?send=true';
             header('Location: '.$caminho);
             die();

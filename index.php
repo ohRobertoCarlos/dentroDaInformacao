@@ -1,6 +1,6 @@
 <?php
 
-require 'vendor/autoload.php';
+require_once 'vendor/autoload.php';
 
 $autoload = function($class){
 	if(file_exists($class. '.php')){

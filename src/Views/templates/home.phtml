@@ -1,12 +1,15 @@
 
-<?php include 'header.phtml' ?>
+<?php require_once 'header.phtml' ?>
 <body>
 <div class="conteiner-home">
     <main>
 
     <h2 class="titulo-main">Últimas Notícias</h2>
 
+    <?php if(is_string($dados['total_noticias'])){ echo $dados['total_noticias'];} ?>
+
     <?php foreach($dados['noticias'] as $dado){ ?>
+        
         <article>
             <div class="item-img">
                 <img src="<?=$dado->thumbnail?>" alt="Imagem-capa">
@@ -17,7 +20,9 @@
                 <p><?=$dado->descricao?></p>
             </div>
         </article>
+
     <?php } ?>
+
         <span><a class="link todas-noticias" href="<?=PATH_INDEX?>todas-noticias">Todas Notícias?</a></span>
     </main>
     <aside>
@@ -26,4 +31,4 @@
 </div>
 </body>
 
-<?php include 'footer.phtml' ?>
+<?php require_once 'footer.phtml' ?>

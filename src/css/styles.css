@@ -337,6 +337,7 @@ a .fa-sign-out-alt {
 .conteiner-noticia {
   background-color: #f2f0eb;
   width: 80%;
+  min-height: var(--header-position);
   margin: 0 auto;
   padding: 10px;
 }
@@ -521,6 +522,25 @@ legend {
 .container-todas-noticias div.conteudo-texto-item {
   display: flex;
   align-items: center;
+}
+
+div#pagination {
+  width: 80%;
+  margin: 10px auto;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+ 
+}
+
+div#pagination a {
+  background-color: grey;
+  color: white;
+  margin: 15px;
+  padding: 10px;
+  border-radius: 4px;
 }
 
 @media screen and (max-width: 760px) {

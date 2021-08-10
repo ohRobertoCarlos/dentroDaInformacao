@@ -13,17 +13,21 @@ class HomeController{
     }
 
     public function index(){
+  
         $noticias = $this->model->getNoticias();
+        $totalNoticias = count($noticias);
 
-        
+        if($totalNoticias == 0){
+            $totalNoticias = 'Não há noticias cadastradas!';
+        }
+
         MainView::render('home',array(
             'titulo' => 'Home',
             'noticias' => $noticias,
+            'total_noticias' => $totalNoticias,
             'icon' => 'icon_home.png'
         ));
     }
-
-
 
     public static function redirectHome(){
         $caminho = PATH_INDEX. 'home';
@@ -31,32 +35,10 @@ class HomeController{
         die();
     }
 
-/*public static function getNoticias(){
-        $model = new HomeModel;
-        $noticias = [
-            [
-            'titulo_noticia' => 'Flamengo ou Fluminense?',
-            'descricao_noticia' => 'Quem ganha o jogo de hoje?'
-            ]
-        ];
-        $contentNoticia = MainView::getContent('item-noticia');
-
-        foreach($noticias => $noticia){
-            str_replace($noticia, array_keys($noticia), $contentNoticia);
-
-            return $contentNoticia;
-        }
-
-    }*/
 
     public function mostrarNoticia(){
         $slug = isset($_GET['slug']) ? $_GET['slug'] : '';
         $noticia = $this->model->mostrarNoticia($slug);
-
-        /*echo '<pre>';
-        print_r($noticia);
-        echo '</pre>';
-        exit();*/
 
         if($noticia != false){
             MainView::render('noticia',array(
@@ -72,12 +54,23 @@ class HomeController{
     }
 
     public function todasNoticias(){
-        $model = new HomeModel;
-        $noticias = $this->model->todasNoticias();
+        $page = $_GET['page'] ?? 1;
+        $itemsPagina = 5;
+
+        $qtd_noticias = $this->model->qtdNoticias()['qtd_noticias'];
+        $noticias = $this->model->todasNoticias($page, $itemsPagina);
+
+        //Ajustar noticias na ordem correta
+        $noticias = array_reverse($noticias);
+
+        $pages = $this->model->pagination($qtd_noticias,$itemsPagina);
 
         MainView::render('todas-noticias', array(
             'titulo' => 'Todas notícias',
-            'noticias' => $noticias
+            'qtd_noticias' => $qtd_noticias,
+            'noticias' => $noticias,
+            'pages' => $pages,
+            'pageAtual' => $page
         ));
     }
 

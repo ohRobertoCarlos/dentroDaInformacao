@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Database;
 
 class Connection{ 
 
@@ -11,7 +11,7 @@ class Connection{
 			
 			$db = new \PDO('mysql:host='. getenv('DB_HOST') .';dbname=' .getenv('DB_NAME'). ';charset=utf8',getenv('DB_USER'),getenv('DB_PASSWORD'));
 
-		}catch(PDOException $e){
+		}catch(\PDOException $e){
 			die("<h3>Não foi possível estabelecer comunicação com o banco de dados</h3>");
 		}
 

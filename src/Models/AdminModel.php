@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Connection;
+use App\Database\Connection;
 
 class AdminModel{
 
