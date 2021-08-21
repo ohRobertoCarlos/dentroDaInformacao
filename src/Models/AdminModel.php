@@ -68,12 +68,13 @@ class AdminModel{
 
         $thumbnail ='resources/images/'.$nomeImagem;
 
-        $stmt = $this->db->prepare('INSERT INTO noticia(id, titulo,subtitulo, texto_conteudo, id_autor,thumbnail,descricao,slug) VALUES (:id,:titulo, :subtitulo,:texto_conteudo,:autor,:thumbnail,:descricao,:slug)');
+        $stmt = $this->db->prepare('INSERT INTO noticia(id, titulo,subtitulo, texto_conteudo, id_autor,thumbnail,descricao,slug,data_publicacao) VALUES (:id,:titulo, :subtitulo,:texto_conteudo,:autor,:thumbnail,:descricao,:slug,:data_publicacao)');
 
         $stmt->bindValue(':id',$idNoticia);
         $stmt->bindValue(':titulo',$titulo);
         $stmt->bindValue(':subtitulo',$subtitulo);
         $stmt->bindValue(':texto_conteudo',$conteudo);
+        $stmt->bindValue(':data_publicacao',$data_publicacao);
         $stmt->bindValue(':autor',$autor);
         $stmt->bindValue(':thumbnail',$thumbnail);
         $stmt->bindValue(':descricao',$descricao);

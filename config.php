@@ -4,7 +4,7 @@ use App\Common\Environment;
 date_default_timezone_set('America/Sao_Paulo');
 ini_set('display_errors','on');
 
-const PATH_INDEX = 'http://localhost/dentroDaInformacao/';
+const PATH_INDEX = 'https://localhost/dentroDaInformacao/';
 const PATH_ROOT = __DIR__.'/';
 
 //Inicia as variaveis de ambiente.

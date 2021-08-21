@@ -17,7 +17,7 @@ CREATE TABLE `noticia` (
   `texto_conteudo` text NOT NULL,
   `id_autor` int(11) NOT NULL,
   `thumbnail` varchar(255) NOT NULL,
-  `data_publicacao` date DEFAULT curdate(),
+  `data_publicacao` date NOT NULL,
   `descricao` text NOT NULL,
   `slug` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
