@@ -225,8 +225,13 @@ header nav ul li a:hover {
   background-color: #c4c4c4;
 }
 
+.conteiner-painel section a {
+  margin: 15px;
+}
+
 .conteiner-painel div.info-noticias ul {
   display: flex;
+  flex-wrap: wrap;
   align-items: baseline;
 }
 
@@ -376,9 +381,6 @@ main.conteiner-noticia figure figcaption {
   margin: 0;
   text-align: center;
   font-weight: bold;
-}
-
-.conteiner-noticia h2.titulo-noticia {
 }
 
 .conteiner-noticia span {
@@ -544,7 +546,7 @@ div#pagination a {
   border-radius: 4px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 780px) {
   #oquesomos {
     width: 70%;
   }
@@ -597,6 +599,26 @@ div#pagination a {
   display: block;
   margin-top: 30px;
   padding-left: 70px;
+}
+.conteiner-painel section {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.conteiner-painel ul li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+
+.conteiner-painel ul li {
+  display: block;
+  text-align: center;
+  width: 90%;
+  border: 1px solid blue;
+  padding: 5px;
+  margin: 5px;
 }
 
 footer {
