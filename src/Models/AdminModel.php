@@ -222,7 +222,19 @@ class AdminModel{
      * @return boolean
      */
     public function deletarNoticia($slug){
-        //Deletando notícia
+        //Deleta a thumbnail da notícia
+        $stmtArquivo = $this->db->prepare('select thumbnail from noticia where slug = :slug');
+        $stmtArquivo->bindValue(':slug', $slug);
+
+        if($stmtArquivo->execute()){
+
+            $caminhoThumbnail = $stmtArquivo->fetchAll(\PDO::FETCH_ASSOC)[0]['thumbnail'];
+            if(file_exists(PATH_ROOT.$caminhoThumbnail)){
+                unlink(PATH_ROOT.$caminhoThumbnail);
+
+            }
+        }
+        //Deletando notícia do banco de dados
         $sql = 'DELETE FROM noticia WHERE slug = :slug';
         $stmt = $this->db->prepare($sql);
         $stmt->bindValue(':slug', $slug);

@@ -172,6 +172,7 @@ header nav ul li a:hover {
   width: 100%;
   min-height: var(--header-position);
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 
@@ -543,8 +544,63 @@ div#pagination a {
   border-radius: 4px;
 }
 
-@media screen and (max-width: 760px) {
+@media screen and (max-width: 768px) {
   #oquesomos {
     width: 70%;
   }
+
+  .conteiner-home main {
+  background-color: #e7e3e3;
+  width: 90%;
+  height: 90%;
+  margin: 3px 5px 30px 10px;
+  padding: 2px;
+}
+.conteiner-home aside {
+  background-color: #e7e3e3;
+  width: 90%;
+  height: 50vh;
+  margin: 3px 10px 15px 0px;
+  padding: 5px;
+}
+
+.container-todas-noticias {
+  background-color: #e7e3e3;
+  width: 90%;
+  margin: 15px auto;
+  padding: 15px;
+  min-height: var(--header-position);
+}
+
+.conteiner-contato {
+  width: 90%;
+  height: var(--header-position);
+  margin: 0 auto;
+  margin-bottom: 80px;
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.conteiner-contato .nosso-contato {
+  position:relative;
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+  border-right: none;
+}
+
+.conteiner-contato .contato-user {
+  position:relative;
+  width: 90%;
+  display: block;
+  margin-top: 30px;
+  padding-left: 70px;
+}
+
+footer {
+  position: relative;
+  margin-top: auto;
+}
 }
