@@ -170,6 +170,8 @@ class AdminModel{
 
         $slugFormatado = implode('-',$slug);
 
+        $slugFormatado = strtolower($slugFormatado);
+
         $slugFormatado = preg_replace('/(á|ã|â|à)/', 'a',$slugFormatado);
         $slugFormatado = preg_replace('/(é|è|ẽ|ê)/', 'e',$slugFormatado);
         $slugFormatado = preg_replace('/(í|ì|ĩ|î)/', 'i',$slugFormatado);

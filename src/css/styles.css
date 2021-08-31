@@ -400,6 +400,7 @@ main.conteiner-noticia figure figcaption {
 .conteiner-adi-noticia {
   width: 80%;
   margin: 10px auto;
+  display: flex;
 }
 
 .conteiner-adi-noticia input {
@@ -619,6 +620,10 @@ div#pagination a {
   border: 1px solid blue;
   padding: 5px;
   margin: 5px;
+}
+
+.conteiner-adi-noticia input {
+  width: 90%;
 }
 
 footer {
