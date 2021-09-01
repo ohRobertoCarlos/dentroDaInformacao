@@ -74,4 +74,8 @@ class HomeController{
         ));
     }
 
+    public function avaliarNoticia(){
+        print_r($_POST);
+    }
+
 }

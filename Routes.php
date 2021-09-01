@@ -19,6 +19,7 @@ Application::get('gerenciar-noticias','admin','gerenciarNoticias');
 Application::get('delete','admin','deletarNoticia');
 Application::get('edit','admin','editarNoticia');
 Application::get('atualizar-noticia','admin','atualizarNoticia');
+Application::get('avaliar-noticia','home','avaliarNoticia');
 
 
 ?>

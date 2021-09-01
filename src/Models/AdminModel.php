@@ -166,18 +166,25 @@ class AdminModel{
      * @return string
      */
     public function gerarSlug($titulo){
+
+
+
         $slug = explode(' ',$titulo);
 
         $slugFormatado = implode('-',$slug);
 
-        $slugFormatado = strtolower($slugFormatado);
+        $slugFormatado = mb_strtolower($slugFormatado,'UTF-8');
 
+        
         $slugFormatado = preg_replace('/(á|ã|â|à)/', 'a',$slugFormatado);
         $slugFormatado = preg_replace('/(é|è|ẽ|ê)/', 'e',$slugFormatado);
         $slugFormatado = preg_replace('/(í|ì|ĩ|î)/', 'i',$slugFormatado);
         $slugFormatado = preg_replace('/(ó|ò|õ|ô)/', 'o',$slugFormatado);
         $slugFormatado = preg_replace('/(ú|ù|ũ|û)/', 'u',$slugFormatado);
-
+        $slugFormatado = str_replace(['?','!','%','+'
+                                        ,'*','/','=',
+                                        '(',')',',',
+                                        '.'], '',$slugFormatado);
 
         return $slugFormatado;
     }
