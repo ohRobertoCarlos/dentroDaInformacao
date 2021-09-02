@@ -230,10 +230,10 @@ class AdminModel{
      * @param string $slug
      * @return boolean
      */
-    public function deletarNoticia($slug){
+    public function deletarNoticia($id){
         //Deleta a thumbnail da notícia
-        $stmtArquivo = $this->db->prepare('select thumbnail from noticia where slug = :slug');
-        $stmtArquivo->bindValue(':slug', $slug);
+        $stmtArquivo = $this->db->prepare('select thumbnail from noticia where id = :id');
+        $stmtArquivo->bindValue(':id', $id);
 
         if($stmtArquivo->execute()){
 
@@ -244,9 +244,9 @@ class AdminModel{
             }
         }
         //Deletando notícia do banco de dados
-        $sql = 'DELETE FROM noticia WHERE slug = :slug';
+        $sql = 'DELETE FROM noticia WHERE id = :id';
         $stmt = $this->db->prepare($sql);
-        $stmt->bindValue(':slug', $slug);
+        $stmt->bindValue(':id', $id);
         
         if($stmt->execute()){
             return true;
@@ -260,10 +260,10 @@ class AdminModel{
      * @param string $slug
      * @return array|string
      */
-    public function getNoticia($slug){
-        $sql = 'SELECT * FROM noticia WHERE slug = :slug';
+    public function getNoticia($id){
+        $sql = 'SELECT * FROM noticia WHERE id = :id';
         $stmt = $this->db->prepare($sql);
-        $stmt->bindValue(':slug', $slug);
+        $stmt->bindValue(':id', $id);
         $stmt->execute();
 
         if($stmt->rowCount() > 0){
@@ -288,7 +288,6 @@ class AdminModel{
         $descricao = isset($_POST['descricao']) ? $_POST['descricao'] : '';
         $conteudo = isset($_POST['conteudo']) ? $_POST['conteudo'] : '';
         $autor = $_SESSION['id_usuario'];
-        $data_publicacao = date('Y-m-d');
         $slug = $this->gerarSlug($titulo);
         $idNoticia = uniqid();
 

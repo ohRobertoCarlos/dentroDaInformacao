@@ -59,6 +59,7 @@ class AdminController {
     public function sairSessao(){
         session_start();
         unset($_SESSION['email']);
+        unset($_SESSION['id_usuario']);
         header('location: admin-login');
         die();
     }
@@ -143,9 +144,9 @@ class AdminController {
             die();
         }
 
-        $slug = isset($_GET['slug']) ? $_GET['slug'] : '';
+        $id = isset($_GET['id']) ? $_GET['id'] : '';
 
-        if($this->model->deletarNoticia($slug)){
+        if($this->model->deletarNoticia($id)){
             $caminho = PATH_INDEX. 'gerenciar-noticias';
             header('Location: '. $caminho);
             die();
@@ -164,8 +165,8 @@ class AdminController {
             die();
         }
 
-        $slug = isset($_GET['slug']) ? $_GET['slug'] : '';
-        $noticia = $this->model->getNoticia($slug);
+        $id = isset($_GET['id']) ? $_GET['id'] : '';
+        $noticia = $this->model->getNoticia($id);
 
         MainView::render('editar-noticia', array(
             'titulo' => 'Editar Notícia',

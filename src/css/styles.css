@@ -580,6 +580,29 @@ div#pagination a {
   background-color:blue;
 }
 
+#msg-comentario-enviado {
+  font-size: 25px;
+}
+
+.section-comentario-enviado {
+  background-color: #1EE099;
+  border-radius: 8px;
+  text-align: center;
+  width: 450px;
+  height:90px;
+  transition: 0.3s;
+}
+
+.section-comentario-falhou{
+  background-color: #F23838;
+  color: white;
+  border-radius: 8px;
+  text-align: center;
+  width: 450px;
+  height:90px;
+  transition: 0.3s;
+}
+
 
 /*--------------------Mobile Layout */
 @media screen and (max-width: 780px) {
@@ -664,5 +687,13 @@ div#pagination a {
     footer {
       position: relative;
       margin-top: auto;
+    }
+
+    .section-comentario-enviado {
+      width: 90%;
+    }
+
+    .section-comentario-falhou {
+      width: 90%;
     }
 }

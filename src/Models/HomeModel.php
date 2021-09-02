@@ -19,9 +19,9 @@ class HomeModel {
         return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
-    public function mostrarNoticia($slug){
-        $stmt = $this->db->prepare('SELECT *,DATE_FORMAT(data_publicacao,"%d/%m/%Y") AS data_formatada,n.id_autor,u.nome FROM noticia AS n LEFT JOIN usuario AS u ON (n.id_autor = u.id) WHERE slug = :slug');
-        $stmt->bindValue(':slug',$slug);
+    public function mostrarNoticia($id){
+        $stmt = $this->db->prepare('SELECT *,DATE_FORMAT(data_publicacao,"%d/%m/%Y") AS data_formatada,n.id_autor,u.nome FROM noticia AS n LEFT JOIN usuario AS u ON (n.id_autor = u.id) WHERE n.id = :id');
+        $stmt->bindValue(':id',$id);
         $stmt->execute();
 
         if($stmt->rowCount() > 0){
@@ -71,5 +71,87 @@ class HomeModel {
         }
 
         return false;
+    }
+    
+    public function criarUsuarioAvaliarNoticia($dataAtual){
+
+        session_start();
+
+        $id_usuario = $_SESSION['id_usuario'] ?? '';
+
+        //Verifica se algum usuário está logado
+        if(isset($id_usuario) && $id_usuario != '' && !empty($id_usuario)){
+            return $id_usuario;
+        }
+
+        //Verifica se existe algum usuário armazenado em cookies e se ele existe no banco
+        if(isset($_COOKIE['usuario_anonimo'])){
+
+            $stmt = $this->db->prepare("SELECT * FROM usuario WHERE id = ?");
+            $stmt->execute([ $_COOKIE['usuario_anonimo'] ]);
+
+            if($stmt->rowCount() > 0){
+                return $_COOKIE['usuario_anonimo'];
+            }
+            //insere usuário contido no cookie no banco de dados
+            $stmt = $this->db->prepare('INSERT INTO usuario(id,nome) VALUES (:id,:nome)');
+
+            $nomeUsuario = str_replace([' ','-',':'],'_','user'.$dataAtual.'_'.uniqid());
+            $stmt->bindValue( ':nome',$nomeUsuario);
+            $stmt->bindValue(':id', $_COOKIE['usuario_anonimo'] , \PDO::PARAM_INT);
+            
+            if($stmt->execute()) return $_COOKIE['usuario_anonimo'];
+        
+    }
+
+        $nomeUsuarioAnonimo = str_replace([' ','-',':'],'_','user'.$dataAtual.'_'.uniqid());
+        $idUsuarioAnonimo = rand(0,100000000);
+        setcookie('usuario_anonimo', $idUsuarioAnonimo, time() + 60*60*24*365);
+
+       try{
+            $stmt = $this->db->prepare('INSERT INTO usuario(id,nome) VALUES (:id,:nome)');
+            $stmt->bindValue(':nome', $nomeUsuarioAnonimo);
+            $stmt->bindValue(':id', $idUsuarioAnonimo, \PDO::PARAM_INT);
+
+        if($stmt->execute()){
+            return $idUsuarioAnonimo;
+        }
+
+    }catch(\PDOException $e){
+        echo $e->getMessage();
+    }
+    }
+
+
+    public function avaliarNoticia(){
+
+        $dataAtual = date('Y-m-d H:i:s');
+
+        $comentario = $_POST['comentario_avaliacao'] ?? '';
+        $nota = $_POST['nota_avaliacao'] ?? '';
+
+        $id_usuario = $this->criarUsuarioAvaliarNoticia($dataAtual);
+        $id_noticia = $_POST['id_noticia'] ?? '';
+
+        try{
+        $stmt = $this->db->prepare('INSERT INTO avaliacao_usuario_noticia(comentario,nota,id_usuario,id_noticia, data_avaliacao) VALUES (:comentario,:nota,:id_usuario,:id_noticia,:data_avaliacao)');
+        $stmt->bindValue(':comentario', $comentario);
+        $stmt->bindValue(':nota', $nota);
+        $stmt->bindValue(':data_avaliacao', $dataAtual);
+        $stmt->bindValue(':id_usuario', $id_usuario);
+        $stmt->bindValue(':id_noticia', $id_noticia);
+
+        if($stmt->execute()){
+            return json_encode([
+                'status' => 'success'
+            ]);
+        }
+    }catch(\PDOException $e){
+        echo $e->getMessage();
+    }
+
+        return json_encode([
+            'status' => 'error'
+        ]);
     }
 }

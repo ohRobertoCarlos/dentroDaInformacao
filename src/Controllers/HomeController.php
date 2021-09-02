@@ -37,8 +37,8 @@ class HomeController{
 
 
     public function mostrarNoticia(){
-        $slug = isset($_GET['slug']) ? $_GET['slug'] : '';
-        $noticia = $this->model->mostrarNoticia($slug);
+        $idNoticia = isset($_GET['id']) ? $_GET['id'] : '';
+        $noticia = $this->model->mostrarNoticia($idNoticia);
 
         if($noticia != false){
             MainView::render('noticia',array(
@@ -75,7 +75,8 @@ class HomeController{
     }
 
     public function avaliarNoticia(){
-        print_r($_POST);
+        $status = $this->model->avaliarNoticia();
+        print_r($status);
     }
 
 }
