@@ -231,26 +231,30 @@ class AdminModel{
      * @return boolean
      */
     public function deletarNoticia($id){
-        //Deleta a thumbnail da notícia
+        //Busca a thumbnail da notícia para posteriormente ser deletada
         $stmtArquivo = $this->db->prepare('select thumbnail from noticia where id = :id');
         $stmtArquivo->bindValue(':id', $id);
 
         if($stmtArquivo->execute()){
 
             $caminhoThumbnail = $stmtArquivo->fetchAll(\PDO::FETCH_ASSOC)[0]['thumbnail'];
-            if(file_exists(PATH_ROOT.$caminhoThumbnail)){
-                unlink(PATH_ROOT.$caminhoThumbnail);
-
-            }
         }
         //Deletando notícia do banco de dados
-        $sql = 'DELETE FROM noticia WHERE id = :id';
-        $stmt = $this->db->prepare($sql);
+        $stmt = $this->db->prepare("DELETE FROM noticia WHERE id = :id");
         $stmt->bindValue(':id', $id);
         
-        if($stmt->execute()){
+       try{
+            if($stmt->execute()){
+                //deleta o arquivo de thumbnail da notícia
+                if(file_exists(PATH_ROOT.$caminhoThumbnail)){
+                unlink(PATH_ROOT.$caminhoThumbnail);
+                }
             return true;
         }
+    }catch(\PDOException $e){
+        echo $e->getMessage();
+    }
+
         return false;
     }
 

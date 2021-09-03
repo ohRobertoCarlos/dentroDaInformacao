@@ -27,6 +27,22 @@
     </main>
     <aside>
         <h2 class="titulo-main">Em Destaque</h2>
+
+        <?php foreach($dados['noticias_destaque'] as $dado){ ?>
+
+        <article>
+            <div class="item-img">
+                <img src="<?=$dado['thumbnail']?>" alt="Imagem-capa">
+            </div>
+
+            <div class="conteudo-texto-item">
+                <a href="<?=PATH_INDEX?>noticia?id=<?=$dado['id']?>"><h3><?=$dado['titulo']?></h3></a>
+                <p><?=$dado['descricao']?></p>
+            </div>
+        </article>
+
+        <?php } ?>
+
     </aside>
 </div>
 </body>

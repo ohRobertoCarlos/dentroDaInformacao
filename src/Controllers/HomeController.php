@@ -13,8 +13,9 @@ class HomeController{
     }
 
     public function index(){
-  
-        $noticias = $this->model->getNoticias();
+        $noticias = $this->model->getUltimasNoticias();
+        $noticiasDestaque = $this->model->getNoticiasDestaques();
+
         $totalNoticias = count($noticias);
 
         if($totalNoticias == 0){
@@ -24,6 +25,7 @@ class HomeController{
         MainView::render('home',array(
             'titulo' => 'Home',
             'noticias' => $noticias,
+            'noticias_destaque' => $noticiasDestaque,
             'total_noticias' => $totalNoticias,
             'icon' => 'icon_home.png'
         ));

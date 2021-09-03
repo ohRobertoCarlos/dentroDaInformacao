@@ -12,7 +12,7 @@ class HomeModel {
         $this->db = Connection::connect();
     }
 
-    public function getNoticias(){
+    public function getUltimasNoticias(){
         $stmt = $this->db->prepare('SELECT * FROM noticia ORDER BY data_publicacao desc LIMIT 4');
         $stmt->execute();
 
@@ -74,9 +74,7 @@ class HomeModel {
     }
     
     public function criarUsuarioAvaliarNoticia($dataAtual){
-
         session_start();
-
         $id_usuario = $_SESSION['id_usuario'] ?? '';
 
         //Verifica se algum usuário está logado
@@ -93,7 +91,7 @@ class HomeModel {
             if($stmt->rowCount() > 0){
                 return $_COOKIE['usuario_anonimo'];
             }
-            //insere usuário contido no cookie no banco de dados
+            //insere usuário contido no cookie (e não salvo no banco) no banco de dados
             $stmt = $this->db->prepare('INSERT INTO usuario(id,nome) VALUES (:id,:nome)');
 
             $nomeUsuario = str_replace([' ','-',':'],'_','user'.$dataAtual.'_'.uniqid());
@@ -153,5 +151,25 @@ class HomeModel {
         return json_encode([
             'status' => 'error'
         ]);
+    }
+
+    public function getNoticiasDestaques(){
+
+        $noticias = [];
+
+        $stmt = $this->db->prepare('SELECT id_noticia, AVG(nota) AS media FROM avaliacao_usuario_noticia GROUP BY id_noticia ORDER BY media DESC LIMIT 2');
+        $stmt->execute();
+
+        $noticiasDestaque = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        
+        foreach($noticiasDestaque as $key => $noticia){
+            $stmt = $this->db->prepare('SELECT * FROM noticia WHERE id = ?');
+            $stmt->execute([$noticia['id_noticia']]);
+            
+            array_push($noticias,$stmt->fetch(\PDO::FETCH_ASSOC));
+        }
+
+        return $noticias;
+
     }
 }

@@ -144,7 +144,7 @@ class AdminController {
             die();
         }
 
-        $id = isset($_GET['id']) ? $_GET['id'] : '';
+        $id = $_GET['id'] ?? '';
 
         if($this->model->deletarNoticia($id)){
             $caminho = PATH_INDEX. 'gerenciar-noticias';

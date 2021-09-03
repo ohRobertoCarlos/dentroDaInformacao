@@ -1,5 +1,5 @@
 
-// Salva a avaliação da notícia no banco de dados (ainda não terminado)
+// Salva a avaliação da notícia no banco de dados
 $('#enviarAvaliacao').on('click', function() {
 
       if($('#nota_avaliacao').val() == '' || $('#nota_avaliacao').val().length > 1)

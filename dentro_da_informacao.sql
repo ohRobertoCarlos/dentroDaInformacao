@@ -18,8 +18,7 @@ CREATE TABLE `avaliacao_usuario_noticia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `avaliacao_usuario_noticia` (`id`, `comentario`, `nota`, `id_usuario`, `id_noticia`, `data_avaliacao`) VALUES
-(27, 'Teste', '2', 45765799, '60b9301b18a6f', '2021-09-02 18:31:38'),
-(28, 'Deu certo bb :D', '4', 45765799, '60b9301b18a6f', '2021-09-02 18:33:49');
+(40, 'Teste de cookies', '4', 8513942, '61329a1196908', '2021-09-03 21:56:57');
 
 CREATE TABLE `noticia` (
   `id` varchar(32) NOT NULL,
@@ -34,8 +33,7 @@ CREATE TABLE `noticia` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `noticia` (`id`, `titulo`, `subtitulo`, `texto_conteudo`, `id_autor`, `thumbnail`, `data_publicacao`, `descricao`, `slug`) VALUES
-('60b9301b18a6f', 'Novela de gerson com o olympique continua', 'O imbróglio continua', '<h1>Gerson acerta futuro</h1>\r\n<p>Em reuni&atilde;o na ter&ccedil;a-feira (1), Flamengo e Olympique de Marselha acertaram os &uacute;ltimos detalhes para o contrato de venda de Gerson e a negocia&ccedil;&atilde;o j&aacute; est&aacute; sacramentada, faltando apenas a assinatura do contrato para o an&uacute;ncio. Segundo o site \'Ge\', o volante ainda voltar&aacute; da sele&ccedil;&atilde;o ol&iacute;mpica para disputar mais alguns jogos pelo Rubro-Negro antes da despedida</p>\r\n<p>Em reuni&atilde;o na ter&ccedil;a-feira (1), Flamengo e Olympique de Marselha acertaram os &uacute;ltimos detalhes para o contrato de venda de Gerson e a negocia&ccedil;&atilde;o j&aacute; est&aacute; sacramentada, faltando apenas a assinatura do contrato para o an&uacute;ncio. Segundo o site \'Ge\', o volante ainda voltar&aacute; da sele&ccedil;&atilde;o ol&iacute;mpica para disputar mais alguns jogos pelo Rubro-Negro antes da despedida</p>', 1, 'resources/images/image1918161352519109.jpg', '2021-06-03', 'Gerson já não tem mais paciência com frieza da direção', 'Novela-de-gerson-com-o-olympique-continua'),
-('612e3ecccf450', 'Será que a dupla Éverton e Gabi jogará junto hoje?', 'cscaccsa', '<p>vsdvdsvsd</p>', 1, 'resources/images/image1020421711614136.jpg', '2021-08-31', 'vsdvdsv', 'sera-que-a-dupla-everton-e-gabi-jogara-junto-hoje');
+('61329a1196908', 'Testando', 'dcsc', 'xaxs', 1, 'resources/images/image20618691061511.png', '2021-09-03', 'scsdc', 'testando');
 
 CREATE TABLE `usuario` (
   `id` int NOT NULL,
@@ -47,6 +45,7 @@ CREATE TABLE `usuario` (
 
 INSERT INTO `usuario` (`id`, `nome`, `is_admin`, `email`, `telefone`) VALUES
 (1, 'admin', 1, 'admin@email.com', '1199999999999'),
+(8513942, 'user2021_09_03_18_56_57_61329a29c5259', 0, NULL, NULL),
 (45765799, 'user2021-09-02 15:28:40_613117d848fbf', 0, NULL, NULL);
 
 CREATE TABLE `usuario_admin` (
@@ -63,7 +62,7 @@ INSERT INTO `usuario_admin` (`id`, `email_login`, `senha`, `id_usuario`) VALUES
 ALTER TABLE `avaliacao_usuario_noticia`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_usuario` (`id_usuario`),
-  ADD KEY `id_noticia` (`id_noticia`);
+  ADD KEY `avaliacao_usuario_noticia_ibfk_2` (`id_noticia`);
 
 ALTER TABLE `noticia`
   ADD PRIMARY KEY (`id`),
@@ -78,12 +77,12 @@ ALTER TABLE `usuario_admin`
 
 
 ALTER TABLE `avaliacao_usuario_noticia`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 
 ALTER TABLE `avaliacao_usuario_noticia`
   ADD CONSTRAINT `avaliacao_usuario_noticia_ibfk_1` FOREIGN KEY (`id_usuario`) REFERENCES `usuario` (`id`),
-  ADD CONSTRAINT `avaliacao_usuario_noticia_ibfk_2` FOREIGN KEY (`id_noticia`) REFERENCES `noticia` (`id`);
+  ADD CONSTRAINT `avaliacao_usuario_noticia_ibfk_2` FOREIGN KEY (`id_noticia`) REFERENCES `noticia` (`id`) ON DELETE CASCADE;
 
 ALTER TABLE `noticia`
   ADD CONSTRAINT `noticia_ibfk_1` FOREIGN KEY (`id_autor`) REFERENCES `usuario_admin` (`id`);
