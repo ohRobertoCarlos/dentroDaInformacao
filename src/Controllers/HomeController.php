@@ -77,6 +77,8 @@ class HomeController{
     }
 
     public function avaliarNoticia(){
+        header('Access-Control-Allow-Origin: *');
+        
         $status = $this->model->avaliarNoticia();
         print_r($status);
     }

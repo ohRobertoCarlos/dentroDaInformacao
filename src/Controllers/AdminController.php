@@ -175,7 +175,7 @@ class AdminController {
     }
 
     public function atualizarNoticia(){
-        $id = isset($_GET['id']) ? $_GET['id'] : '';
+        $id = $_GET['id'] ?? '';
 
         if($this->model->atualizarNoticia($id)){
             $caminho = PATH_INDEX. 'gerenciar-noticias';

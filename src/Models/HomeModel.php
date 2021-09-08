@@ -93,7 +93,6 @@ class HomeModel {
             }
             //insere usuário contido no cookie (e não salvo no banco) no banco de dados
             $stmt = $this->db->prepare('INSERT INTO usuario(id,nome) VALUES (:id,:nome)');
-
             $nomeUsuario = str_replace([' ','-',':'],'_','user'.$dataAtual.'_'.uniqid());
             $stmt->bindValue( ':nome',$nomeUsuario);
             $stmt->bindValue(':id', $_COOKIE['usuario_anonimo'] , \PDO::PARAM_INT);
@@ -141,7 +140,7 @@ class HomeModel {
 
         if($stmt->execute()){
             return json_encode([
-                'status' => 'success'
+                'status' => 'success',
             ]);
         }
     }catch(\PDOException $e){
