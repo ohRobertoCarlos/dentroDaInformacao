@@ -7,6 +7,8 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8mb4 */;
 
+CREATE DATABASE IF NOT EXISTS `dentro_da_informacao` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `dentro_da_informacao`;
 
 CREATE TABLE `avaliacao_usuario_noticia` (
   `id` int NOT NULL,
@@ -16,9 +18,6 @@ CREATE TABLE `avaliacao_usuario_noticia` (
   `id_noticia` varchar(32) NOT NULL,
   `data_avaliacao` timestamp NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
-INSERT INTO `avaliacao_usuario_noticia` (`id`, `comentario`, `nota`, `id_usuario`, `id_noticia`, `data_avaliacao`) VALUES
-(40, 'Teste de cookies', '4', 8513942, '61329a1196908', '2021-09-03 21:56:57');
 
 CREATE TABLE `noticia` (
   `id` varchar(32) NOT NULL,
@@ -32,8 +31,6 @@ CREATE TABLE `noticia` (
   `slug` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT INTO `noticia` (`id`, `titulo`, `subtitulo`, `texto_conteudo`, `id_autor`, `thumbnail`, `data_publicacao`, `descricao`, `slug`) VALUES
-('61329a1196908', 'Testando', 'dcsc', 'xaxs', 1, 'resources/images/image20618691061511.png', '2021-09-03', 'scsdc', 'testando');
 
 CREATE TABLE `usuario` (
   `id` int NOT NULL,
@@ -44,9 +41,7 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 INSERT INTO `usuario` (`id`, `nome`, `is_admin`, `email`, `telefone`) VALUES
-(1, 'admin', 1, 'admin@email.com', '1199999999999'),
-(8513942, 'user2021_09_03_18_56_57_61329a29c5259', 0, NULL, NULL),
-(45765799, 'user2021-09-02 15:28:40_613117d848fbf', 0, NULL, NULL);
+(1, 'admin', 1, 'admin@email.com', '1199999999999');
 
 CREATE TABLE `usuario_admin` (
   `id` int NOT NULL,
@@ -77,7 +72,7 @@ ALTER TABLE `usuario_admin`
 
 
 ALTER TABLE `avaliacao_usuario_noticia`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 
 ALTER TABLE `avaliacao_usuario_noticia`

@@ -1,6 +1,6 @@
 <?php
 
-//exemplo Application::get($rota,$controller,$funcao);
+//example : Application::get($route,$controller,$function);
 
 Application::get('/','home','redirectHome');
 Application::get('home','home','index');
