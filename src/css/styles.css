@@ -449,6 +449,7 @@ main.conteiner-noticia figure figcaption {
   margin-left: 15px;
   text-overflow: ellipsis;
   padding-right: 20px;
+  transition: 0.2s;
 }
 
 .container-gereciar-noticia h2 {
@@ -606,6 +607,35 @@ div#pagination a {
   transition: 0.3s;
 }
 
+.modal-deletar-noticia {
+  position: fixed;
+  width: 460px;
+  transform: translate(50%,50%);
+  top: 20%;
+  background-color: blue;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 8px;
+  
+}
+
+.modal-deletar-noticia section {
+  display: flex;
+  justify-content: space-around;
+}
+
+.modal-deletar-noticia h2 {
+  color: white;
+}
+
+.modal-deletar-noticia section a {
+  padding: 15px;
+  margin: 10px;
+  border-radius: 8px;
+}
+
 
 /*--------------------Mobile Layout */
 @media screen and (max-width: 780px) {
@@ -698,5 +728,9 @@ div#pagination a {
 
     .section-comentario-falhou {
       width: 90%;
+    }
+
+    .modal-deletar-noticia {
+      transform: none;
     }
 }

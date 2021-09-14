@@ -5,7 +5,8 @@
     <h2>Gerenciar notícias</h2>
 
   <?php foreach($dados['noticias'] as $dado) {?>
-    <article>
+    <article id="<?=$dado->id?>" id_noticia="<?=$dado->id?>">
+
             <div class="item-img">
                 <img src="<?=$dado->thumbnail?>" alt="Imagem-capa">
             </div>
@@ -15,7 +16,7 @@
                 <p><?=$dado->descricao?></p>
             </div>
             <div class="icons-gerenciar">
-                  <a href="<?=PATH_INDEX?>delete?id=<?=$dado->id?>" title="apagar">
+                  <a class="botao_deletar_noticia" title="apagar" id_noticia="<?=$dado->id?>">
                     <i class="fas fa-trash"></i>
                   </a>
                   <a href="<?=PATH_INDEX?>edit?id=<?=$dado->id?>" title="editar">
@@ -31,3 +32,4 @@
 </main>
 
 <?php include 'footer.phtml' ?>
+<script src="src/js/deletarNoticia.js"></script>

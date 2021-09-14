@@ -1,4 +1,7 @@
 
+// Cookie com caminho raiz da aplicação
+var path_index = getCookie('path_index');
+
 // Salva a avaliação da notícia no banco de dados
 $('#enviarAvaliacao').on('click', function() {
 
@@ -12,7 +15,7 @@ $('#enviarAvaliacao').on('click', function() {
 
         //Mandando a requisição AJAX
           $.ajax({
-      url: "https://localhost/dentroDaInformacao/avaliar-noticia",
+      url: path_index + "avaliar-noticia",
       method: "POST",
       data: {
         "nota_avaliacao": $('#nota_avaliacao').val(),
