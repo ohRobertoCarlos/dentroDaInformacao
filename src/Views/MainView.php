@@ -3,26 +3,14 @@ namespace App\Views;
 
 class MainView{
     public static function render($view,$dados = []){
+        // Manipulando buffer (conteúdo da página) para ser enviado todo de uma vez
+        ob_start();
 
         include 'src/Views/templates/' .$view. '.phtml'; 
 
-        /*$dados['conteudo'] = file_get_contents( 'src/Views/templates/' .$view. '.phtml');*/
+        // Envia o buffer (conteúdo da página) completo para o usuário 
+        ob_end_flush();
 
-       /* include 'src/Views/templates/index.phtml';*
-
-   /* $nomes_indexes = array_keys($dados);
-
-	$nomes_indexes = array_map(function($item){
-	return '{{' .$item. '}}';
-	}, $nomes_indexes);
-
-	$conteudo = str_replace($nomes_indexes, array_values($dados), $dados['conteudo']);
-
-        if($useIndex == true){
-            include 'src/Views/templates/index.phtml';
-        }else{
-            echo $conteudo;
-        }/=*/
     }
 
 

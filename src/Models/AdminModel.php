@@ -249,7 +249,11 @@ class AdminModel{
                 if(file_exists(PATH_ROOT.$caminhoThumbnail)){
                 unlink(PATH_ROOT.$caminhoThumbnail);
                 }
-            return true;
+            return json_encode([
+                'status' => 'success',
+                'action' => 'delete'
+            ],JSON_UNESCAPED_UNICODE);
+            
         }
     }catch(\PDOException $e){
         echo $e->getMessage();

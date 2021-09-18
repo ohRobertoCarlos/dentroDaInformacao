@@ -18,7 +18,7 @@ $('.botao_deletar_noticia').on('click', function(e){
     //Mandando a requisição AJAX
     $.ajax({
       url: path_index + "delete?id=" + idNoticia,
-      method: "GET",
+      method: "DELETE",
       data: {},
       success: function( result ) {
        div.remove();
