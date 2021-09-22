@@ -6,7 +6,7 @@ class MainView{
         // Manipulando buffer (conteúdo da página) para ser enviado todo de uma vez
         ob_start();
 
-        include 'src/Views/templates/' .$view. '.phtml'; 
+        include PATH_ROOT .'src/Views/templates/' .$view. '.phtml'; 
 
         // Envia o buffer (conteúdo da página) completo para o usuário 
         ob_end_flush();

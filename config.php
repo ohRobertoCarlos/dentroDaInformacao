@@ -6,6 +6,7 @@ ini_set('display_errors','on');
 
 const PATH_INDEX = 'http://localhost/dentroDaInformacao/';
 const PATH_ROOT = __DIR__.'/';
+const PATH_PUBLIC = __DIR__ .'/public/';
 
 // usar caminho raiz do projeto com javascript
 setcookie('path_index',PATH_INDEX);

@@ -111,7 +111,7 @@ class AdminModel{
      * @return boolean
      */
     public function uploadImagem($imagem,$nomeImagem){
-        if(move_uploaded_file($imagem['tmp_name'],PATH_ROOT.'resources/images/'.$nomeImagem)){
+        if(move_uploaded_file($imagem['tmp_name'],PATH_PUBLIC.'resources/images/'.$nomeImagem)){
             return true;
         }
 
@@ -246,9 +246,10 @@ class AdminModel{
        try{
             if($stmt->execute()){
                 //deleta o arquivo de thumbnail da notícia
-                if(file_exists(PATH_ROOT.$caminhoThumbnail)){
-                unlink(PATH_ROOT.$caminhoThumbnail);
+                if(file_exists(PATH_PUBLIC.$caminhoThumbnail)){
+                    unlink(PATH_PUBLIC.$caminhoThumbnail);
                 }
+
             return json_encode([
                 'status' => 'success',
                 'action' => 'delete'

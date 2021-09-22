@@ -30,7 +30,8 @@ class Application{
 					$newController = new $class;
 					$newController->$func();
 				}catch(Exception $e){		
-					echo "Erro!";
+					//echo $e->getMessage();
+					echo 'Erro!';
 				}
 			}else{
 				return false;
