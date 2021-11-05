@@ -6,38 +6,38 @@
 
     <h2 class="titulo-main">Últimas Notícias</h2>
 
-    <?php if(is_string($dados['total_noticias'])){ echo $dados['total_noticias'];} ?>
+    <?php if(is_string($total_noticias)){ echo $total_noticias;} ?>
 
-    <?php foreach($dados['noticias'] as $dado){ ?>
+    <?php foreach($noticias as $noticia){ ?>
         
         <article>
             <div class="item-img">
-                <img src="<?=PATH_INDEX?><?=$dado->thumbnail?>" alt="Imagem-capa">
+                <img src="<?= PATH_INDEX ?><?= $noticia->thumbnail ?>" alt="Imagem-capa">
             </div>
 
             <div class="conteudo-texto-item">
-                <a href="<?=PATH_INDEX?>noticia?id=<?=$dado->id?>"><h3><?=$dado->titulo?></h3></a>
-                <p><?=$dado->descricao?></p>
+                <a href="<?= PATH_INDEX ?>noticia?id=<?= $noticia->id ?>"><h3><?= $noticia->titulo ?></h3></a>
+                <p><?= $noticia->descricao ?></p>
             </div>
         </article>
 
     <?php } ?>
 
-        <span><a class="link todas-noticias" href="<?=PATH_INDEX?>todas-noticias">Todas Notícias?</a></span>
+        <span><a class="link todas-noticias" href="<?= PATH_INDEX ?>todas-noticias">Todas Notícias?</a></span>
     </main>
     <aside>
         <h2 class="titulo-main">Em Destaque</h2>
 
-        <?php foreach($dados['noticias_destaque'] as $dado){ ?>
+        <?php foreach($noticias_destaque as $noticia){ ?>
 
         <article>
             <div class="item-img">
-                <img src="<?=$dado['thumbnail']?>" alt="Imagem-capa">
+                <img src="<?= $noticia['thumbnail'] ?>" alt="Imagem-capa">
             </div>
 
             <div class="conteudo-texto-item">
-                <a href="<?=PATH_INDEX?>noticia?id=<?=$dado['id']?>"><h3><?=$dado['titulo']?></h3></a>
-                <p><?=$dado['descricao']?></p>
+                <a href="<?= PATH_INDEX ?>noticia?id=<?= $noticia['id'] ?>"><h3><?= $noticia['titulo'] ?></h3></a>
+                <p><?= $noticia['descricao'] ?></p>
             </div>
         </article>
 

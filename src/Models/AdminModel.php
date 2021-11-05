@@ -14,9 +14,9 @@ class AdminModel{
     }
 
     /**
-     * Verifica a existência de um usuário
-     *
-     * @return boolean|array
+     * Verifica a existência de um usuário no banco
+     * 
+     * @return bool|object
      */
     public function consultarUsuario(){
 
@@ -33,7 +33,7 @@ class AdminModel{
             return false;
         }
 
-        return $stmt->fetch(\PDO::FETCH_ASSOC);
+        return $stmt->fetch(\PDO::FETCH_OBJ);
     }
 
 
@@ -90,14 +90,14 @@ class AdminModel{
     /**
      * pega o total de noticias cadastradas
      *
-     * @return boolean|array
+     * @return boolean|object
      */
     public function totalNoticias(){
         $stmt = $this->db->prepare("SELECT COUNT(*) AS totalNoticias FROM noticia");
         $stmt->execute();
 
         if($stmt->rowCount() > 0){
-            return $stmt->fetch(\PDO::FETCH_ASSOC);
+            return $stmt->fetch(\PDO::FETCH_OBJ);
         }
 
         return false;
@@ -193,7 +193,7 @@ class AdminModel{
     /**
      * Consulta o número de noticias publicadas hoje
      *
-     * @return int|array
+     * @return int|object
      */
     public function noticiasHoje(){
         $hoje = date('Y-m-d');
@@ -207,7 +207,7 @@ class AdminModel{
             return intval(0);
         }
 
-        return $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(\PDO::FETCH_OBJ);
     }
 
     /**

@@ -7,4 +7,20 @@ if(document.title == 'Todas notícias'){
     linkPageAtual.setAttribute('style', 'background-color: blue');
 }
 
+//Menu responsivo
+var menu = document.querySelector('nav');
+
+if(window.innerWidth <= 780){
+    menu.style.display = 'none';
+}
+window.addEventListener('resize', function(){
+    if(this.innerWidth <= 780){
+        menu.style.display = 'none';
+    }else{
+        menu.style.display = 'flex';
+    }
+});
+
+
+
 

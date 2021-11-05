@@ -3,7 +3,7 @@
 <main class="conteiner-painel">
     <div class="topo-pagina">
         <h2>Painel - HOME</h2>
-        <a href="<?=PATH_INDEX?>sair"><i class="fas fa-sign-out-alt" title="Sair"></i></a>
+        <a href="<?= PATH_INDEX ?>sair"><i class="fas fa-sign-out-alt" title="Sair"></i></a>
     </div>
     
     <hr>
@@ -12,11 +12,11 @@
         <span>Info - Noticias</span>
         <ul>
             <li><h5>Total de Notícias</h5>
-                <p><?=$dados['totalNoticias']['totalNoticias']?></p>
+                <p><?= $totalNoticias ?></p>
             </li>
             <li>
                 <h5>Notícias de hoje</h5>
-                <p><?=$dados['noticiasHoje'][0]['noticiasHoje']?></p>
+                <p><?= $noticiasHoje ?></p>
             </li>
             <li><h5>Notícias do mês</h5></li>
         </ul>
@@ -24,9 +24,9 @@
 
     <span>Gerenciar Noticias</span>
     <section>
-        <a class="btn btn-success" href="<?=PATH_INDEX?>adicionar-noticia">Incluir noticia</a>
+        <a class="btn btn-success" href="<?= PATH_INDEX ?>adicionar-noticia">Incluir noticia</a>
 
-        <a class="btn btn-primary" href="<?=PATH_INDEX?>gerenciar-noticias">Gerenciar Notícias</a>
+        <a class="btn btn-primary" href="<?= PATH_INDEX ?>gerenciar-noticias">Gerenciar Notícias</a>
 
         <div class="form-painel">
     </section>

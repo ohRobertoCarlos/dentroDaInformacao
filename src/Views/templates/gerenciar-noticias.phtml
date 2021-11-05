@@ -4,22 +4,22 @@
   <div class="container-gereciar-noticia">
     <h2>Gerenciar notícias</h2>
 
-  <?php foreach($dados['noticias'] as $dado) {?>
-    <article id="<?=$dado->id?>" id_noticia="<?=$dado->id?>">
+  <?php foreach($noticias as $noticia) {?>
+    <article id="<?= $noticia->id ?>" id_noticia="<?= $noticia->id ?>">
 
             <div class="item-img">
-                <img src="<?=$dado->thumbnail?>" alt="Imagem-capa">
+                <img src="<?= $noticia->thumbnail ?>" alt="Imagem-capa">
             </div>
 
             <div class="conteudo-texto-item">
-                <a href="<?=PATH_INDEX?>noticia?id=<?=$dado->id?>"><h3><?=$dado->titulo?></h3></a>
-                <p><?=$dado->descricao?></p>
+                <a href="<?= PATH_INDEX ?>noticia?id=<?= $noticia->id ?>"><h3><?= $noticia->titulo ?></h3></a>
+                <p><?= $noticia->descricao ?></p>
             </div>
             <div class="icons-gerenciar">
-                  <a class="botao_deletar_noticia" title="apagar" id_noticia="<?=$dado->id?>">
+                  <a class="botao_deletar_noticia" title="apagar" id_noticia="<?= $noticia->id ?>">
                     <i class="fas fa-trash"></i>
                   </a>
-                  <a href="<?=PATH_INDEX?>edit?id=<?=$dado->id?>" title="editar">
+                  <a href="<?= PATH_INDEX ?>edit?id=<?= $noticia->id ?>" title="editar">
                     <i class="fas fa-pen"></i>
                   </a>
                   

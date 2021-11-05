@@ -3,14 +3,14 @@
 
 <main class="conteiner-noticia"> 
 
-    <h1 class="titulo-noticia"><?=$dados['noticia']->titulo?></h1>
-    <p><?=$dados['noticia']->descricao?></p>
+    <h1 class="titulo-noticia"><?= $noticia->titulo ?></h1>
+    <p><?= $noticia->descricao ?></p>
     <hr>
-    <span class="data-publicacao">Publicado em <?=$dados['noticia']->data_formatada?>, por <?=$dados['noticia']->nome?></span>
+    <span class="data-publicacao">Publicado em <?= $noticia->data_formatada ?>, por <?= $noticia->nome ?></span>
 
     <div class="conteudo-noticia">
 
-        <p><?=$dados['noticia']->texto_conteudo?></p>
+        <p><?= $noticia->texto_conteudo ?></p>
 
     </div>
     

@@ -44,8 +44,8 @@ class AdminController {
         $existeUsuario = $this->model->consultarUsuario();
         if($existeUsuario != false){
             session_start();
-            $_SESSION['email'] = $existeUsuario['email_login'];
-            $_SESSION['id_usuario'] = $existeUsuario['id_usuario'];
+            $_SESSION['email'] = $existeUsuario->email_login;
+            $_SESSION['id_usuario'] = $existeUsuario->id_usuario;
             $caminho = PATH_INDEX. 'admin-login';
             header('location: '. $caminho);
             die();
@@ -74,12 +74,12 @@ class AdminController {
         }
 
         $totalNoticias = $this->model->totalNoticias();
-        $noticiasHoje = $this->model->noticiasHoje();
+        $noticiasHoje = current($this->model->noticiasHoje());
 
         MainView::render('painel-home', array(
             'titulo' => 'Painel - HOME',
-            'totalNoticias' => $totalNoticias,
-            'noticiasHoje' => $noticiasHoje
+            'totalNoticias' => $totalNoticias->totalNoticias,
+            'noticiasHoje' => $noticiasHoje->noticiasHoje
         ));
     }
 

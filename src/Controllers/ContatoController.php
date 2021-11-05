@@ -16,22 +16,26 @@ class ContatoController {
     public function index(){
         
         MainView::render('contato', array(
-            'titulo' => 'Contato',
-            'icon' => 'icon_contato.png'
+            'titulo' => 'Contato'
         ));  
     }
 
 
     public function enviarContato(){
+
         if($this->model->salvarUsuario()){
             $caminho = PATH_INDEX.'contato?send=true';
             header('Location: '.$caminho);
             die();
+
         }else{
+
             $caminho = PATH_INDEX.'contato?error=error';
             header('Location: '.$caminho);
             die();
+            
         }
         
     }
+
 }
